@@ -1,0 +1,129 @@
+/**
+ * TRUMPS RESPONSIVE
+ */
+
+/*------------------------------------*\
+    mixins
+\*------------------------------------*/
+
+.HideSideBanner {
+    .side-banner {
+        display: none;
+    }
+}
+
+.SetRightSideBanner(@right) {
+    .side-banner {
+        opacity: 1;
+        right:   -@right;
+    }    
+}
+
+
+/*------------------------------------*\
+    from 100px to 72360px0px
+\*------------------------------------*/
+
+@media all and (min-width: 100px) and (max-width: 360px) {
+    main.mdl-grid {
+        padding: 0;
+    }
+    
+    .section-title {
+        height: 60px;
+    }
+}
+
+/*------------------------------------*\
+    from 100px to 600px
+\*------------------------------------*/
+    
+@media all and (min-width: 100px) and (max-width: 600px) {
+    .mdl-layout__header {
+        padding: 30px 0;
+    }    
+    
+    .mdl-mini-footer {
+        background-color:#EEEEEE;
+        padding: 30px 20px 10px 20px;       
+        
+        &__left-section {
+            display: none;
+        }
+                
+        &__right-section {
+            width: 100%;        
+
+            ul {
+                text-align: center;        
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+    to 600px
+\*------------------------------------*/
+
+@media all and (max-width: 600px) {
+    .HideSideBanner;
+    
+    .animated-logos {
+        width: 300px!important;
+        margin: 0 auto;
+        padding: 0;
+    }
+    
+    .header__title {
+        display: none;
+    }
+}
+
+/*------------------------------------*\
+    from 600px to 720px
+\*------------------------------------*/
+
+@media all and (min-width: 601px) and (max-width: 720px) {
+    .mdl-layout__header {
+        padding: 30px 0;
+    }
+    
+    .main-card {
+        margin: auto 0;
+    }
+
+    .SetRightSideBanner(20%);
+}
+
+/*------------------------------------*\
+    from 720px to 840px
+\*------------------------------------*/
+
+@media all and (min-width: 721px) and (max-width: 840px) {
+    .SetRightSideBanner(10%);
+}
+
+/*------------------------------------*\
+    from 840px to 960px
+\*------------------------------------*/
+
+@media all and (min-width: 841px) and (max-width: 960px) {     
+    .SetRightSideBanner(5%);    
+}
+
+/*------------------------------------*\
+    from 960px
+\*------------------------------------*/ 
+ 
+@media all and (min-width: 961px) {  
+    .SetRightSideBanner(0%);    
+}
+
+/*------------------------------------*\
+    from 720px to 1024px
+\*------------------------------------*/
+
+@media all and (min-width: 721px) and (max-width: 1024px) {
+    .SetRightSideBanner(7%);
+}
+

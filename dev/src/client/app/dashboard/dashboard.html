@@ -1,0 +1,48 @@
+<md-toolbar class="md-tall1">
+    <div class="md-toolbar-tools">
+        <h2>
+        <span>Medicover Group HR Metrics</span>
+      </h2>
+        <span flex></span>
+        <md-button class="" aria-label="Log out" ui-sref="login">
+            Log out
+        </md-button>
+    </div>
+</md-toolbar>
+
+<md-card ng-controller="Dashboard as vm">
+    <md-card-content>
+        <h4>Medicover / Synevo</h4>
+        <p>Period: <strong>JAN 1, 2015 - DEC 31, 2015</strong>
+            <md-button class="md-primary" ng-click="vm.showAlert()">
+                change period
+            </md-button>
+        </p>
+    </md-card-content>
+</md-card>
+<div ng-cloak>
+    <md-content layout-padding>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="totals" class="md-primary">
+                <md-content class="md-padding">
+                    <div ng-include="'app/dashboard/totals.html'"></div>
+                </md-content>
+            </md-tab>
+            <md-tab label="physicians medicover">
+                <md-content class="md-padding">
+                    <div ng-include="'app/dashboard/physicians-medicover.html'"></div>
+                </md-content>
+            </md-tab>
+            <md-tab label="physicians synevo">
+                <md-content class="md-padding">
+                    <div ng-include="'app/dashboard/physicians-synevo.html'"></div>
+                </md-content>
+            </md-tab>
+            <md-tab label="leavers">
+                <md-content class="md-padding">
+                    <div ng-include="'app/dashboard/leavers.html'"></div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

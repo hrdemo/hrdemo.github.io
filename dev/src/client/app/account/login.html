@@ -1,0 +1,23 @@
+<div layout="row" style="height: 50px;"></div>
+<div layout="column" layout-align="center center">
+    <h4>Medicover Group HR Metrics</h4>
+    <md-card style="width: 350px;">
+        <md-card-content>
+            <h5>Login</h5>
+            <form name="userForm" ng-submit="vm.login()" style="margin-top: 25px;">
+                <md-input-container class="md-block">
+                    <label>User name</label>
+                    <input ng-model="user.name">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input ng-model="user.password">
+                </md-input-container>
+                <div layout="row">
+                    <md-button type="submit" class="md-raised md-primary" ui-sref="totals"
+                    style="margin-left:0">Login</md-button>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+</div>
