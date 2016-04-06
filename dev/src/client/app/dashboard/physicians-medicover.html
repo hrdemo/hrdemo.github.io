@@ -29,9 +29,11 @@
 
         </thead>
         <tbody>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><strong>Primary Care</strong></td>
-                <td>0</td>
+            <tr class="tr-total tr-total--link" ng-click="tc.showPrimaryCare=!tc.showPrimaryCare">
+                <td id="Physicians" class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons" ng-if="!tc.showPrimaryCare">add</i>
+                    <i class="material-icons" ng-if="tc.showPrimaryCare">remove</i>Primary Care</td>            
+                <td>{{pm.medicoverTotal1 + pm.medicoverTotal2 + pm.medicoverTotal3}}</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
@@ -43,75 +45,165 @@
                 <td>0</td>
                 <td>0</td>
             </tr>
-            <tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPrimaryCare">
                 <td class="mdl-data-table__cell--non-numeric">Doctor during specialisation</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>
+                    <input ng-model="pm.medicoverTotal1" style="width: 50px;" type="number">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
             </tr>
-            <tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPrimaryCare">
                 <td class="mdl-data-table__cell--non-numeric">Family medicine</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>
+                    <input ng-model="pm.medicoverTotal2" style="width: 50px;" type="number">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
             </tr>
-            <tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPrimaryCare">
                 <td class="mdl-data-table__cell--non-numeric">Internal medicine</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>
+                    <input ng-model="pm.medicoverTotal3" style="width: 50px;" type="number">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="user.title" style="width: 50px;">
+                </td>
             </tr>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><strong>Medical specialty</strong></td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+            <tr class="tr-total tr-total--link" ng-click="tc.showMedicalSpecialty=!tc.showMedicalSpecialty">
+                <td id="Physicians" class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons" ng-if="!tc.showMedicalSpecialty">add</i>
+                    <i class="material-icons" ng-if="tc.showMedicalSpecialty">remove</i>Medical specialty</td>
+                <td>{{pm.medicoverTotal}}</td>
+                <td>{{pm.wilanowTotal}}</td>
+                <td>{{pm.damianTotal}}</td>
+                <td>{{pm.medipartnerTotal}}</td>
+                <td>{{pm.invimedTotal}}</td>
+                <td>{{pm.medicoverTotal}}</td>
+                <td>{{pm.medicoverRoTotal}}</td>
+                <td>{{pm.pecheaHospTotal}}</td>
+                <td>{{pm.medicoverTotal}}</td>
+                <td>{{pm.ivfTotal}}</td>
+                <td>{{pm.medicoverTotal}}</td>
             </tr>
-            <tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showMedicalSpecialty">
                 <td class="mdl-data-table__cell--non-numeric">Allergologist</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>
+                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.wilanowTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.damianTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.medipartnerTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.invimedTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.medicoverRoTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.pecheaHospTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.ivfTotal" style="width: 50px;">
+                </td>
+                <td>
+                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                </td>
             </tr>
         </tbody>
     </table>
