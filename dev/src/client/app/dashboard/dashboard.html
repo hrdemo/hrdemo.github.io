@@ -4,44 +4,85 @@
         <span>Medicover Group HR Metrics</span>
       </h2>
         <span flex></span>
-        <md-button class="" aria-label="Log out" ui-sref="login">
+        <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+                Reports
+                <md-icon class="material-icons">arrow_drop_down</md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex>
+                            <p flex>Generate report</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">timeline</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex>
+                            <p flex>Configure report</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">settings</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+                John Doe
+                <md-icon class="material-icons">arrow_drop_down</md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex>
+                            <p flex>Profile</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">person</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex ui-sref="login">
+                            <p flex>Logout</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">power_settings_new</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <!--<md-button class="" aria-label="Log out" ui-sref="login">
             Log out
-        </md-button>
+        </md-button>-->
     </div>
 </md-toolbar>
-
-<md-card ng-controller="Dashboard as vm">
-    <md-card-content>
-        <h4>Medicover / Synevo</h4>
-        <p>Period: <strong>JAN 1, 2015 - DEC 31, 2015</strong>
-            <md-button class="md-primary" ng-click="vm.showAlert()">
-                change period
-            </md-button>
-        </p>
-    </md-card-content>
-</md-card>
+<md-content layout-padding>
+    <md-card ng-controller="Dashboard as vm">
+        <md-card-content>
+            <h4 style="margin: 10px 0 10px 0;">Medicover / Synevo</h4>
+            <p>Period: <strong>JAN 1, 2015 - DEC 31, 2015</strong>
+                <md-button class="md-primary" ng-click="vm.showAlert()">
+                    change period
+                </md-button>
+            </p>
+        </md-card-content>
+    </md-card>
+</md-content>
 <div ng-cloak>
     <md-content layout-padding>
-        <md-tabs md-dynamic-height md-border-bottom>
+        <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedIndex">
             <md-tab label="totals" class="md-primary">
-                <md-content class="md-padding">
-                    <div ng-include="'app/dashboard/totals.html'"></div>
-                </md-content>
+                <div ng-include="'app/dashboard/totals.html'"></div>
             </md-tab>
             <md-tab label="physicians medicover">
-                <md-content class="md-padding">
-                    <div ng-include="'app/dashboard/physicians-medicover.html'"></div>
-                </md-content>
+                <div ng-include="'app/dashboard/physicians-medicover.html'"></div>
             </md-tab>
             <md-tab label="physicians synevo">
-                <md-content class="md-padding">
-                    <div ng-include="'app/dashboard/physicians-synevo.html'"></div>
-                </md-content>
+                <div ng-include="'app/dashboard/physicians-synevo.html'"></div>
             </md-tab>
             <md-tab label="leavers">
-                <md-content class="md-padding">
-                    <div ng-include="'app/dashboard/leavers.html'"></div>
-                </md-content>
+                <div ng-include="'app/dashboard/leavers.html'"></div>
             </md-tab>
         </md-tabs>
     </md-content>

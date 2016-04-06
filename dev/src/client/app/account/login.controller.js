@@ -9,9 +9,8 @@
     function LoginController($state) {
         var vm = this;
         vm.title = 'Login';
-     
         vm.login = login;
-        
+
         function login() {
             $state.go('totals');
         }

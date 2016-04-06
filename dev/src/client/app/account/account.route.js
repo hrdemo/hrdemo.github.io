@@ -14,12 +14,12 @@
         return [
             {
                 state: 'account',
-                abstract: true,                
+                abstract: true,
                 config: {
                     templateUrl: 'app/account/account.html',
                     url: ''
                 }
-            },            
+            },
             {
                 state: 'login',
                 config: {

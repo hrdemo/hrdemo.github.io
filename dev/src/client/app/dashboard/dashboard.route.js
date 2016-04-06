@@ -14,12 +14,12 @@
         return [
             {
                 state: 'dashboard',
-                abstract: true,                
+                abstract: true,
                 config: {
                     templateUrl: 'app/dashboard/dashboard.html',
                     url: ''
                 }
-            },            
+            },
             {
                 state: 'totals',
                 config: {

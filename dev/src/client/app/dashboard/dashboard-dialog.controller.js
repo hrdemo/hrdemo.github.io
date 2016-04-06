@@ -10,7 +10,7 @@
         var vm = this;
         vm.title = 'Dashboard';
         $scope.closeDialog = closeDialog;
-        
+
         function closeDialog() {
             $mdDialog.hide();
         }
