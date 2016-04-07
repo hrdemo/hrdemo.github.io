@@ -2,12 +2,34 @@
     th {
         padding-top: 8px;
         font-weight: 800;
-        border: solid 1px whitesmoke;
+        border: solid 1px @grey-300;
     }
     th, td {
         text-align: center;
         //vertical-align: middle;
-        border: solid 1px whitesmoke;
+        border: solid 1px @grey-300;
+    }
+    td {
+        padding: 0;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+    tr {
+        &:hover {
+            background-color: transparent!important;
+        }
+    }
+    
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0;
+    }    
+    input[type=number] {
+        border: none;
+        padding: 15px 30px;
+        outline: none;                
     }
 }
 

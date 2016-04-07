@@ -1,5 +1,17 @@
 <md-content layout-padding ng-controller="PhysiciansMedicoverController as pm">
 
+    <md-toolbar style="background-color: transparent">
+        <div class="md-toolbar-tools">
+            <h2>
+          <span>Toolbar with Standard Buttons</span>
+        </h2>
+            <span flex></span>
+            <md-button class="md-raised md-primary" aria-label="Save" ng-click="pm.save()">
+                Save
+            </md-button>
+        </div>
+    </md-toolbar>
+
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
         <thead>
             <tr>
@@ -32,18 +44,25 @@
             <tr class="tr-total tr-total--link" ng-click="tc.showPrimaryCare=!tc.showPrimaryCare">
                 <td id="Physicians" class="mdl-data-table__cell--non-numeric">
                     <i class="material-icons" ng-if="!tc.showPrimaryCare">add</i>
-                    <i class="material-icons" ng-if="tc.showPrimaryCare">remove</i>Primary Care</td>            
+                    <i class="material-icons" ng-if="tc.showPrimaryCare">remove</i>Primary Care</td>
                 <td>{{pm.medicoverTotal1 + pm.medicoverTotal2 + pm.medicoverTotal3}}</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{{pm.wilanowTotal1 + pm.wilanowTotal2 + pm.wilanowTotal3}}</td>
+                <td>{{pm.damianaTotal1 + pm.damianaTotal2 + pm.damianaTotal3}}</td>
+                <td>{{pm.medipartnerTotal1 + pm.medipartnerTotal2 + pm.medipartnerTotal3}}</td>
+                <td>{{pm.invimedTotal1 + pm.invimedTotal2 + pm.invimedTotal3}}</td>
+                <td>{{pm.medicoverTotal1 + pm.wilanowTotal1 + pm.damianaTotal1 + pm.medipartnerTotal1 + pm.invimedTotal1 + pm.medicoverTotal2
+                    + pm.wilanowTotal2 + pm.damianaTotal2 + pm.medipartnerTotal2 + pm.invimedTotal2 + pm.medicoverTotal3
+                    + pm.wilanowTotal3 + pm.damianaTotal3 + pm.medipartnerTotal3 + pm.invimedTotal3}}</td>
+                <td>{{pm.medicoverRoTotal1 + pm.medicoverRoTotal2 + pm.medicoverRoTotal3}}</td>
+                <td>{{pm.pecheaTotal1 + pm.pecheaTotal2 + pm.pecheaTotal3}}</td>
+                <td>{{pm.medicoverRoTotal1 + pm.pecheaTotal1 + pm.medicoverRoTotal2 + pm.pecheaTotal2 + pm.medicoverRoTotal3
+                    + pm.pecheaTotal3}}</td>
+                <td>{{pm.ivfTotal1 + pm.ivfTotal2 + pm.ivfTotal3}}</td>
+                <td>{{pm.medicoverTotal1 + pm.wilanowTotal1 + pm.damianaTotal1 + pm.medipartnerTotal1 + pm.invimedTotal1 + pm.medicoverTotal2
+                    + pm.wilanowTotal2 + pm.damianaTotal2 + pm.medipartnerTotal2 + pm.invimedTotal2 + pm.medicoverTotal3
+                    + pm.wilanowTotal3 + pm.damianaTotal3 + pm.medipartnerTotal3 + pm.invimedTotal3 + pm.medicoverRoTotal1
+                    + pm.pecheaTotal1 + pm.medicoverRoTotal2 + pm.pecheaTotal2 + pm.medicoverRoTotal3 + pm.pecheaTotal3 +
+                    pm.ivfTotal1 + pm.ivfTotal2 + pm.ivfTotal3}}</td>
             </tr>
             <tr class="tr-total__detail tr-total--link" ng-show="tc.showPrimaryCare">
                 <td class="mdl-data-table__cell--non-numeric">Doctor during specialisation</td>
@@ -51,34 +70,36 @@
                     <input ng-model="pm.medicoverTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.wilanowTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.damianaTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.medipartnerTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.invimedTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverTotal1 + pm.wilanowTotal1 + pm.damianaTotal1 + pm.medipartnerTotal1 + pm.invimedTotal1}}</span>
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.medicoverRoTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.pecheaTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverRoTotal1 + pm.pecheaTotal1}}</span>
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.ivfTotal1" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverTotal1 + pm.wilanowTotal1 + pm.damianaTotal1 + pm.medipartnerTotal1 + pm.invimedTotal1 +
+                            pm.medicoverRoTotal1 + pm.pecheaTotal1 +
+                            pm.ivfTotal1}}</span>
                 </td>
             </tr>
             <tr class="tr-total__detail tr-total--link" ng-show="tc.showPrimaryCare">
@@ -87,35 +108,36 @@
                     <input ng-model="pm.medicoverTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.wilanowTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.damianaTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.medipartnerTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.invimedTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverTotal2 + pm.wilanowTotal2 + pm.damianaTotal2 + pm.medipartnerTotal2 + pm.invimedTotal2}}</span>
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.medicoverRoTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.pecheaTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverRoTotal2 + pm.pecheaTotal2}}</span>
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.ivfTotal2" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
-                </td>
+                    <span>{{pm.medicoverTotal2 + pm.wilanowTotal2 + pm.damianaTotal2 + pm.medipartnerTotal2 + pm.invimedTotal2 +
+                            pm.medicoverRoTotal2 + pm.pecheaTotal2 +
+                            pm.ivfTotal2}}</span> </td>
             </tr>
             <tr class="tr-total__detail tr-total--link" ng-show="tc.showPrimaryCare">
                 <td class="mdl-data-table__cell--non-numeric">Internal medicine</td>
@@ -123,35 +145,36 @@
                     <input ng-model="pm.medicoverTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.wilanowTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.damianaTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.medipartnerTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.invimedTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverTotal3 + pm.wilanowTotal3 + pm.damianaTotal3 + pm.medipartnerTotal3 + pm.invimedTotal3}}</span>
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.medicoverRoTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.pecheaTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <span>{{pm.medicoverRoTotal3 + pm.pecheaTotal3}}</span>
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
+                    <input ng-model="pm.ivfTotal3" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="user.title" style="width: 50px;">
-                </td>
+                    <span>{{pm.medicoverTotal3 + pm.wilanowTotal3 + pm.damianaTotal3 + pm.medipartnerTotal3 + pm.invimedTotal3 +
+                            pm.medicoverRoTotal3 + pm.pecheaTotal3 +
+                            pm.ivfTotal3}}</span> </td>
             </tr>
             <tr class="tr-total tr-total--link" ng-click="tc.showMedicalSpecialty=!tc.showMedicalSpecialty">
                 <td id="Physicians" class="mdl-data-table__cell--non-numeric">
@@ -162,47 +185,49 @@
                 <td>{{pm.damianTotal}}</td>
                 <td>{{pm.medipartnerTotal}}</td>
                 <td>{{pm.invimedTotal}}</td>
-                <td>{{pm.medicoverTotal}}</td>
+                <td>{{pm.medicoverTotal + pm.wilanowTotal + pm.damianTotal + pm.medipartnerTotal + pm.invimedTotal}}</td>
                 <td>{{pm.medicoverRoTotal}}</td>
                 <td>{{pm.pecheaHospTotal}}</td>
-                <td>{{pm.medicoverTotal}}</td>
+                <td>{{pm.medicoverRoTotal + pm.pecheaHospTotal}}</td>
                 <td>{{pm.ivfTotal}}</td>
-                <td>{{pm.medicoverTotal}}</td>
+                <td>{{pm.medicoverTotal + pm.wilanowTotal + pm.damianTotal + pm.medipartnerTotal + pm.invimedTotal + pm.medicoverRoTotal
+                    + pm.pecheaHospTotal + pm.ivfTotal}}</td>
             </tr>
             <tr class="tr-total__detail tr-total--link" ng-show="tc.showMedicalSpecialty">
                 <td class="mdl-data-table__cell--non-numeric">Allergologist</td>
                 <td>
-                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                    <input ng-model="pm.medicoverTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.wilanowTotal" style="width: 50px;">
+                    <input ng-model="pm.wilanowTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.damianTotal" style="width: 50px;">
+                    <input ng-model="pm.damianTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.medipartnerTotal" style="width: 50px;">
+                    <input ng-model="pm.medipartnerTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.invimedTotal" style="width: 50px;">
+                    <input ng-model="pm.invimedTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                    <span>{{pm.medicoverTotal + pm.wilanowTotal + pm.damianTotal + pm.medipartnerTotal + pm.invimedTotal}}</span>
                 </td>
                 <td>
-                    <input ng-model="pm.medicoverRoTotal" style="width: 50px;">
+                    <input ng-model="pm.medicoverRoTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.pecheaHospTotal" style="width: 50px;">
+                    <input ng-model="pm.pecheaHospTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                    <span>{{pm.medicoverRoTotal + pm.pecheaHospTotal}}</span>
                 </td>
                 <td>
-                    <input ng-model="pm.ivfTotal" style="width: 50px;">
+                    <input ng-model="pm.ivfTotal" style="width: 50px;" type="number">
                 </td>
                 <td>
-                    <input ng-model="pm.medicoverTotal" style="width: 50px;">
+                    <span>{{pm.medicoverTotal + pm.wilanowTotal + pm.damianTotal + pm.medipartnerTotal + pm.invimedTotal +
+                        pm.medicoverRoTotal + pm.pecheaHospTotal + pm.ivfTotal}}</span>
                 </td>
             </tr>
         </tbody>
