@@ -16,7 +16,7 @@
         vm.saveData = saveData;
         vm.sendNotification = sendNotification;
         vm.showTab = showTab;
-        vm.selectedCountry = $localStorage.selectedItem.name;
+        vm.selectedCountry;
         vm.isLocal = false;
         vm.tab1 = true;
         vm.tab2 = false;
@@ -27,6 +27,9 @@
         function activate() {
             if ($localStorage.userName === 'localhr') {
                 vm.isLocal = true;
+            }
+            if ($localStorage.selectedItem) {
+                vm.selectedCountry = $localStorage.selectedItem.name;
             }
         }
 

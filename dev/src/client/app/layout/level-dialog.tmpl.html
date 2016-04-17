@@ -19,7 +19,7 @@
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
-            <md-button ng-click="vm.closeDialog()" style="margin-right:20px;" ui-sref="login">
+            <md-button ng-click="vm.logout()" style="margin-right:20px;" ui-sref="login">
                 Logout
             </md-button>
             <md-button ng-click="vm.nextStep()" style="margin-right:20px;" ng-disabled="!vm.selectedLevel">
@@ -49,7 +49,7 @@
             <md-button ng-click="vm.previousStep()" style="margin-right:20px;">
                 Back
             </md-button>
-            <md-button ng-click="vm.closeDialog()" style="margin-right:20px;" ng-disabled="!vm.selectedItem" ui-sref="active-staff">
+            <md-button ng-click="vm.closeDialog()" style="margin-right:20px;" ng-disabled="!vm.selectedItem">
                 Continue
             </md-button>
         </md-dialog-actions>

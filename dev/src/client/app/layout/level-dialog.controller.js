@@ -15,6 +15,7 @@
         vm.selectedLevel;
         vm.step1 = true;
         vm.step2 = false;
+        vm.logout = logout;
         vm.dataLevels = [
             { id: 1, name: 'Group', desc: 'Medicover and Synevo divisions', items: [] },
             {
@@ -57,11 +58,12 @@
         }
 
         function closeDialog() {
-            
+
             vm.$storage = $localStorage.$default({
                 selectedItem: { id: vm.selectedItem.id, name: vm.selectedItem.name }
             });
-            
+
+            $state.go('active-staff');
             $mdDialog.hide();
         }
 
@@ -72,6 +74,7 @@
             vm.items = vm.dataLevels[vm.selectedLevel.id - 1].items;
 
             if (vm.items.length === 0) {
+                $state.go('active-staff');
                 $mdDialog.hide();
             }
 
@@ -84,7 +87,16 @@
             vm.step2 = false;
 
             vm.selectedItemId = 0;
-            
+
+        }
+        function logout() {
+            delete $localStorage.userName;
+            delete $localStorage.selectedItem;
+            delete $localStorage.selectedLevel;
+
+            $state.go('login');
+            $mdDialog.hide();
+
         }
     }
 })();
