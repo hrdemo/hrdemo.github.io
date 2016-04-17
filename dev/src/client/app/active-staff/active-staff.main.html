@@ -1,0 +1,319 @@
+<md-content layout-padding ng-controller="MainController as mc">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th rowspan="3" style="vertical-align: middle;">ACTIVE STAFF</th>
+                <th colspan="2">Employees</th>
+                <th colspan="2">Contractors</th>
+                <th colspan="2">TOTAL</th>
+                <th rowspan="2">Average Commitment
+                    <br> to Company</th>
+            </tr>
+            <tr>
+                <th colspan="2">End of Quarter</th>
+                <th colspan="2">End of Quarter</th>
+                <th colspan="2">End of Quarter</th>
+            </tr>
+            <tr>
+                <th>Head count</th>
+                <th>FTEs</th>
+                <th>Head count</th>
+                <th>FTEs</th>
+                <th>Head count</th>
+                <th>FTEs</th>
+                <th>End of Quarter
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr-total tr-total--link" ng-click="tc.showPhysicians=!tc.showPhysicians">
+                <td id="Physicians" class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons" ng-if="!tc.showPhysicians">add</i>
+                    <i class="material-icons" ng-if="tc.showPhysicians">remove</i>Physicians</td>
+                <td><strong>{{vm.pcpeHead + vm.speHead}}</strong></td>
+                <td><strong>{{vm.pcpeFte  + vm.speFte}}</strong></td>
+                <td><strong>{{vm.pcpcHead + vm.spcHead}}</strong></td>
+                <td><strong>{{vm.pcpcFte  + vm.spcFte}}</strong></td>
+                <td><strong>{{vm.pcpeHead + vm.speHead + vm.pcpcHead + vm.spcHead}}</strong></td>
+                <td><strong>{{vm.pcpeFte  + vm.speFte + vm.pcpcFte  + vm.spcFte}}</strong></td>
+                <td><strong>{{((vm.pcpeFte  + vm.speFte + vm.pcpcFte  + vm.spcFte) / (vm.pcpeHead + vm.speHead + vm.pcpcHead + vm.spcHead)) * 100 | number:2}} %</strong></td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPhysicians" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Primary Care Physicians</td>
+                <td><input type="number" ng-model="vm.pcpeHead"></td>
+                <td><input type="number" ng-model="vm.pcpeFte"></td>
+                <td><input type="number" ng-model="vm.pcpcHead"></td>
+                <td><input type="number" ng-model="vm.pcpcFte"></td>
+                <td>{{vm.pcpeHead + vm.pcpcHead}}</td>
+                <td>{{vm.pcpeFte + vm.pcpcFte}}</td>
+                <td>{{(vm.pcpeFte + vm.pcpcFte) / (vm.pcpeHead + vm.pcpcHead) * 100 | number: 2}} %</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPhysicians" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Specialists Physicians</td>
+                <td><input type="number" ng-model="vm.speHead"></td>
+                <td><input type="number" ng-model="vm.speFte"></td>
+                <td><input type="number" ng-model="vm.spcHead"></td>
+                <td><input type="number" ng-model="vm.spcFte"></td>
+                <td>{{vm.speHead + vm.spcHead}}</td>
+                <td>{{vm.speFte + vm.spcFte}}</td>
+                <td>{{(vm.speFte + vm.spcFte) / (vm.speHead + vm.spcHead) * 100 | number: 2}} %</td>
+            </tr>
+            <tr class="tr-total tr-total--link" ng-click="tc.showOperations=!tc.showOperations">
+                <td class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons" ng-if="!tc.showOperations">add</i>
+                    <i class="material-icons" ng-if="tc.showOperations">remove</i><strong>Operations</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Nurses
+                    <md-tooltip md-direction="right">
+                        to include: regular and specialists nurses which are working close to the patients; midwifes; nurses from BDP's, </md-tooltip>
+                </td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Technician Specialists & Lab Specialists</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>15%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Other Medical</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Operations Admin</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Operations HO & other OPS</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total no-icon">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Operations Medical</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>11%</td>
+            </tr>
+            <tr class="tr-total no-icon">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Operations Non-Medical</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2%</td>
+            </tr>
+            <tr class="tr-total tr-total--link" ng-click="tc.showCommercials=!tc.showCommercials">
+                <td class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons" ng-if="!tc.showCommercials">add</i>
+                    <i class="material-icons" ng-if="tc.showCommercials">remove</i><strong>Commercial</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Customer Service</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Call Center</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>15%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Telesales</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Direct Sales</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Corporate Sales</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Marketing & Communication</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Other Commercial</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total tr-total--link" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
+                <td class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons" ng-if="!tc.showOfficeFunctions">add</i>
+                    <i class="material-icons" ng-if="tc.showOfficeFunctions">remove</i><strong>Office Functions</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Finance</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Legal</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>15%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">HR</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">IT</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+                <td class="mdl-data-table__cell--non-numeric">Other Office Functions</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>23%</td>
+            </tr>
+            <tr class="tr-total no-icon">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Non Medical Total</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td rowspan="2"></td>
+            </tr>
+            <tr class="tr-total no-icon">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Grand TOTAL</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="tr-total no-icon">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Average Commitment to Company</strong></td>
+                <td colspan="2">2%</td>
+                <td colspan="2">22%</td>
+                <td colspan="2">21%</td>
+                <td colspan="2">20%</td>
+            </tr>
+        </tbody>
+    </table>
+
+</md-content>

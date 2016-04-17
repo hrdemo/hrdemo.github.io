@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -13,12 +13,9 @@
         vm.showAlert = showAlert;
         vm.selectedIndex = 0;
 
+
         function showAlert() {
-            $mdDialog.show({
-                controller: 'DashboardDialog',
-                templateUrl: 'app/dashboard/period.tmpl.html',
-                clickOutsideToClose: true
-            });
+           
         }
 
         function closeDialog() {

@@ -1,0 +1,57 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>
+            <span>Medicover Group HR Metrics</span>
+        </h2>
+        <span flex></span>
+        <!--<md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+                Reports
+                <md-icon class="material-icons">arrow_drop_down</md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex>
+                            <p flex>Generate report</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">timeline</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex>
+                            <p flex>Configure report</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">settings</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>-->
+        <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)" style="height:64px;">
+                Luminitia Rusu
+                <md-icon class="material-icons">arrow_drop_down</md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex>
+                            <p flex>Profile</p>
+                            <md-icon md-menu-align-target class="material-icons" style="margin: auto 3px auto 0;">person</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <div layout="row" flex ng-click="vm.logout()">
+                            <p flex>Logout</p>
+                            <md-icon md-menu-align-target class="material-icons" 
+                            style="margin: auto 3px auto 0;">power_settings_new</md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</md-toolbar>

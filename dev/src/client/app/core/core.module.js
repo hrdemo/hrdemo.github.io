@@ -6,6 +6,7 @@
             /* Angular modules */
             'ngAnimate',
             'ngSanitize',
+            'ngStorage',
             /* Cross-app modules */
             'blocks.diagnostics',
             'blocks.exception',

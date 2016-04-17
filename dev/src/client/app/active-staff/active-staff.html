@@ -1,0 +1,91 @@
+<section ng-hide="vm.isHidden">
+    
+<header class="clearfix">
+    <hr-top-nav></hr-top-nav>
+</header>
+<md-content layout="row">
+    <md-card flex="60">
+        <md-card-content layout="row" layout-wrap>
+            <div flex="40">
+                <h5 style="margin: 10px 0 10px 0; font-weight: 300">Division: <strong>Medicover</strong></h5>
+                <h5 style="margin: 10px 0 10px 0; font-weight: 300">Country: <strong>{{vm.selectedCountry}}</strong></h5>
+            </div>
+            <div flex="60">
+                <h5 style="margin: 10px 0 10px 0; font-weight: 300">Business: <strong>all</strong></h5>
+                <h5 style="margin: 10px 0 10px 0; font-weight: 300">Location: <strong>all</strong></h5>
+            </div>
+
+            <p flext="100">Period: <strong>JAN 1, 2016 - MAR 31, 2016 (Q1 2016)</strong>
+                <md-icon class="material-icons">info_outline
+                    <md-tooltip md-direction="right">
+                        Open till 20th of April
+                    </md-tooltip>
+                </md-icon>
+            </p>
+        </md-card-content>
+    </md-card>
+
+    <md-card flex="40" layout="row">
+        <md-card-content layout="row" layout-align="end end" flex="100">
+                <md-button class="" aria-label="Send notification" style=" color: #424242;" 
+                ng-if="vm.isLocal"
+                ng-click="vm.sendNotification()">
+                    Send notification
+                </md-button>
+                 <md-button class="" aria-label="Export to PDF" style=" color: #424242;">
+                    Export to PDF
+                </md-button>
+                <md-button class="md-primary md-raised" aria-label="Save" 
+                ng-if="vm.isLocal"
+                ng-click="vm.saveData()">
+                    Save data
+                </md-button>
+        </md-card-content>
+    </md-card>
+</md-content>
+
+<md-toolbar>
+      <div class="md-toolbar-tools demo-tab" style="background:whiteSmoke;">
+        <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(1)" ng-class="{'active': vm.tab1}">
+          Active Staff
+        </md-button>
+        <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(2)" ng-class="{'active': vm.tab2}">
+          Staff turnover & Retention index
+        </md-button>
+        <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(3)" ng-class="{'active': vm.tab3}">
+          Recruitment report
+        </md-button>
+      </div>
+    </md-toolbar>
+
+<div ng-include="'app/active-staff/active-staff.main.html'" ng-show="vm.tab1"></div>
+<div ng-include="'app/active-staff/active-staff.mat-staff.html'" ng-show="vm.tab2"></div>
+<div ng-include="'app/active-staff/active-staff.recruitment-report.html'" ng-show="vm.tab3"></div>
+
+
+</section>
+<!--
+<div class="layer" style="position:fixed;top:0;left:0;width:100%;height:100%;background:whiteSmoke;"
+ng-show="vm.isLoading">
+    
+</div>-->
+<!--
+<div ng-cloak>
+    <md-content layout-padding> {{vm.selectedIndex}}
+        <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedIndex">
+            <md-tab label="totals" class="md-primary">
+                <h1>test</h1>
+                <div ng-include="'app/dashboard/totals.html'"></div>
+            </md-tab>
+            <md-tab label="physicians medicover">
+                <div ng-include="'app/dashboard/physicians-medicover.html'"></div>
+            </md-tab>
+            <md-tab label="physicians synevo">
+                <div ng-include="'app/dashboard/physicians-synevo.html'"></div>
+            </md-tab>
+            <md-tab label="leavers">
+                <div ng-include="'app/dashboard/leavers.html'"></div>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>-->

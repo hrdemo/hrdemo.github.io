@@ -1,0 +1,52 @@
+<md-content layout-padding ng-controller="MainController as mc">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th>QUARTERLY STAFF MOVEMENET</th>
+                <th>End of Quarter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">Total Leavers for the quarterly reporting period</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">Total New Hires for the quarterly reporting period</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">New Hires - Replacement </td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">New Hires - New positions</td>
+                <td>4</td>
+            </tr>
+            <tr style="background-color: #E1BEE7">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Maternity leave</strong></td>
+                <td>2</td>
+            </tr>
+            <tr style="background-color: #E1BEE7">
+                <td class="mdl-data-table__cell--non-numeric">The number above is included into the total headcount</td>
+                <td>
+                    <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary" style="margin: 0px 0px 0px 10px;">
+                    </md-checkbox>
+                </td>
+            </tr>
+            <tr style="background-color: #FFF8E1">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Preagnacy leave</strong></td>
+                <td>
+                    2
+                </td>
+            </tr>
+            <tr style="background-color: #FFF8E1">
+                <td class="mdl-data-table__cell--non-numeric">The number above is included into the total headcount</td>
+                <td>
+                    <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1" class="md-primary" style="margin: 0px 0px 0px 10px;">
+                    </md-checkbox>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-content>

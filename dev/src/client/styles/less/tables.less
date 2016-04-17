@@ -11,6 +11,7 @@
     }
     td {
         padding: 0;
+        padding-right: 10px;
         &:hover {
             background-color: transparent;
         }
@@ -30,6 +31,16 @@
         border: none;
         padding: 15px 30px;
         outline: none;                
+    }
+    th {
+        &:last-child {
+            padding-right: 18px;
+        }
+    }
+    td {
+        &:last-child {
+            padding-right: 0;
+        }
     }
 }
 
@@ -73,4 +84,11 @@
             text-align: center;
         }
     }
+}
+
+.mdl-data-table input[type=number] {
+    border: none;
+    padding: 15px;
+    outline: none;
+    width: 30px;
 }

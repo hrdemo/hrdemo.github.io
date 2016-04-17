@@ -6,13 +6,18 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($state) {
+    function LoginController($localStorage, $state) {
         var vm = this;
         vm.title = 'Login';
         vm.login = login;
+        vm.user;
 
         function login() {
-            $state.go('totals');
+            vm.$storage = $localStorage.$default({
+                userName: vm.user.name
+            });
+
+            $state.go('level');
         }
     }
 })();

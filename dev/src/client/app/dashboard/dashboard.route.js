@@ -21,14 +21,14 @@
                 }
             },
             {
-                state: 'totals',
+                state: 'physicians',
                 config: {
                     parent: 'dashboard',
-                    url: '/totals',
-                    templateUrl: 'app/dashboard/totals.html',
+                    url: '/physicians',
+                    templateUrl: 'app/dashboard/physicians-medicover.html',
                     controller: 'TotalsController',
                     controllerAs: 'vm',
-                    title: 'totals'
+                    title: 'physicians'
                 }
             }
         ];

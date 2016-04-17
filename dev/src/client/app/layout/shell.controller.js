@@ -1,35 +1,37 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('app.layout')
-        .controller('Shell', Shell);
+        .controller('ShellController', ShellController);
 
     /* @ngInject */
-    function Shell($timeout, config, logger) {
+    function ShellController($mdDialog, $timeout, config, logger) {
         var vm = this;
 
         vm.title = config.appTitle;
-        vm.busyMessage = 'Please wait ...';
-        vm.isBusy = true;
-        vm.showSplash = true;
-        vm.tagline = {
-            text: 'Created by John Papa',
-            link: 'http://twitter.com/john_papa'
-        };
 
         activate();
 
         function activate() {
-            logger.success(config.appTitle + ' loaded!', null);
-            hideSplash();
+            showSelectLevel();
         }
 
         function hideSplash() {
             //Force a 1 second delay so we can see the splash.
-            $timeout(function() {
+            $timeout(function () {
                 vm.showSplash = false;
             }, 1000);
+        }
+
+        function showSelectLevel() {
+            $timeout(function () {
+                $mdDialog.show({
+                    templateUrl: 'app/layout/level-dialog.tmpl.html',
+                    clickOutsideToClose: false
+                });
+            }, 100);
+
         }
     }
 })();

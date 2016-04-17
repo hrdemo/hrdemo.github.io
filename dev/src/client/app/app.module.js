@@ -9,7 +9,8 @@
 
         /* Feature areas */
         'app.account',
-        'app.dashboard',
+        'app.active-staff',
+        //'app.dashboard',
         'app.layout'
     ]);
 

@@ -1,0 +1,57 @@
+<md-dialog aria-label="Select level" ng-controller="LevelDialogController as vm">
+    <form ng-show="vm.step1">
+        <md-dialog-content style="width:500px;">
+            <div class="md-dialog-content">
+                <md-radio-group ng-model="vm.selectedLevel">
+                    <md-subheader class="md-no-sticky">Select data level</md-subheader>
+                    <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="level in vm.dataLevels" ng-click="null" layout="column">
+                            <md-radio-button ng-value="level" class="md-primary" style="margin-bottom:0;padding: 15px 0 15px 0; min-width: 400px;">
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>{{ level.name }}</h3>
+                                    <p>{{ level.desc }}</p>
+                                </div>
+                            </md-radio-button>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-radio-group>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.closeDialog()" style="margin-right:20px;" ui-sref="login">
+                Logout
+            </md-button>
+            <md-button ng-click="vm.nextStep()" style="margin-right:20px;" ng-disabled="!vm.selectedLevel">
+                Continue
+            </md-button>
+        </md-dialog-actions>
+    </form>
+    <form ng-show="vm.step2">
+        <md-dialog-content style="width:500px;">
+            <div class="md-dialog-content">
+                <md-radio-group ng-model="vm.selectedItem">
+                    <md-subheader class="md-no-sticky">Select {{vm.selectedLevel.name}}</md-subheader>
+                    <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="item in vm.items" ng-click="null">
+                            <md-radio-button ng-value="item" class="md-primary" style="margin-bottom:0;padding: 15px 0 15px 0; min-width: 400px;">
+                                <div class="md-list-item-text">
+                                    <h3>{{ item.name }}</h3>
+                                </div>
+                            </md-radio-button>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-radio-group>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.previousStep()" style="margin-right:20px;">
+                Back
+            </md-button>
+            <md-button ng-click="vm.closeDialog()" style="margin-right:20px;" ng-disabled="!vm.selectedItem" ui-sref="active-staff">
+                Continue
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

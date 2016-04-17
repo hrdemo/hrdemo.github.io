@@ -3,10 +3,10 @@
 
     angular
         .module('app.layout')
-        .directive('htTopNav', htTopNav);
+        .directive('hrTopNav', hrTopNav);
 
     /* @ngInject */
-    function htTopNav () {
+    function hrTopNav ($localStorage, $state) {
         var directive = {
             bindToController: true,
             controller: TopNavController,
@@ -16,12 +16,22 @@
                 'tagline': '=',
                 'title': '='
             },
-            templateUrl: 'app/layout/ht-top-nav.html'
+            templateUrl: 'app/layout/hr-top-nav.html'
         };
 
         /* @ngInject */
         function TopNavController() {
             var vm = this;
+            
+            vm.logout = logout;
+            
+            function logout() {
+                delete $localStorage.userName;
+                delete $localStorage.selectedItem;
+                delete $localStorage.selectedLevel;
+                
+                $state.go('login');
+            }
         }
 
         return directive;
