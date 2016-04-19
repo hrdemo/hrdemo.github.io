@@ -6,12 +6,12 @@
     <md-content layout="row">
         <md-card flex="60">
             <md-card-content layout="row" layout-wrap>
-                <div flex="40">
-                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Division: <strong>Medicover</strong></h5>
+                <div flex="50">
+                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Division: <strong>{{vm.selectedDivision}}</strong></h5>
                     <h5 style="margin: 10px 0 10px 0; font-weight: 300">Country: <strong>{{vm.selectedCountry}}</strong></h5>
                 </div>
-                <div flex="60">
-                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Business: <strong>all</strong></h5>
+                <div flex="50">
+                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Business: <strong>{{vm.selectedBusiness}}</strong></h5>
                     <h5 style="margin: 10px 0 10px 0; font-weight: 300">Location: <strong>all</strong></h5>
                 </div>
 
@@ -27,7 +27,7 @@
 
         <md-card flex="40" layout="row">
             <md-card-content layout="row" layout-align="end end" flex="100" layout-wrap>
-                
+
                 <md-button class="" aria-label="Send notification" style=" color: #424242;" ng-if="vm.isLocal" ng-click="vm.sendNotification()">
                     <md-icon class="material-icons">sms</md-icon>
                     Send notification
@@ -50,20 +50,24 @@
     <md-toolbar>
         <div class="md-toolbar-tools demo-tab" style="background:whiteSmoke;">
             <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(1)" ng-class="{'active': vm.tab1}">
-                Active Staff
+                Active Staff Members
             </md-button>
             <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(2)" ng-class="{'active': vm.tab2}">
-                Staff turnover & Retention index
+                Staff Turnover <span style="font-size: 0.8em">(rolling 12 months)</span>
             </md-button>
             <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(3)" ng-class="{'active': vm.tab3}">
-                Recruitment report
+                Retention Index
+            </md-button>
+            <md-button aria-label="Go Back" style="color: gray;" ng-click="vm.showTab(4)" ng-class="{'active': vm.tab4}">
+                Quarterly Staff Movements
             </md-button>
         </div>
     </md-toolbar>
 
-    <div ng-include="'app/active-staff/active-staff.main.html'" ng-show="vm.tab1"></div>
-    <div ng-include="'app/active-staff/active-staff.mat-staff.html'" ng-show="vm.tab2"></div>
-    <div ng-include="'app/active-staff/active-staff.recruitment-report.html'" ng-show="vm.tab3"></div>
+    <div ng-include="'app/active-staff/active-staff.active.html'" ng-show="vm.tab1"></div>
+    <div ng-include="'app/active-staff/active-staff.turnover.html'" ng-show="vm.tab2"></div>
+    <div ng-include="'app/active-staff/active-staff.retention.html'" ng-show="vm.tab3"></div>
+    <div ng-include="'app/active-staff/active-staff.movements.html'" ng-show="vm.tab4"></div>
 
 
 </section>

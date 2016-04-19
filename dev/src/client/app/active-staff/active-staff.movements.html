@@ -1,0 +1,28 @@
+<md-content layout-padding ng-controller="MainController as mc">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+            <tr>
+                <th>QUARTERLY STAFF MOVEMENETS</th>
+                <th>End of Quarter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><strong>Total Leavers for the quarterly reporting period</strong></td>
+                <td><strong><input type="number" ng-model="vm.leavers"></strong></td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><strong>Total New Hires for the quarterly reporting period</strong></td>
+                <td><strong>{{vm.newhiresreplacement + vm.newhiresnewpositions || 0}}</strong></td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">New Hires - Replacement </td>
+                <td><input type="number" ng-model="vm.newhiresreplacement"></td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">New Hires - New positions</td>
+                <td><input type="number" ng-model="vm.newhiresnewpositions"></td>
+            </tr>
+        </tbody>
+    </table>
+</md-content>

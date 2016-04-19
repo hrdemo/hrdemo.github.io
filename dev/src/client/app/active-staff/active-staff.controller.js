@@ -28,8 +28,24 @@
             if ($localStorage.userName === 'localhr') {
                 vm.isLocal = true;
             }
-            if ($localStorage.selectedItem) {
+            if ($localStorage.selectedLevel.id === 1) {
+                vm.selectedDivision = $localStorage.selectedLevel.name;
+                vm.selectedCountry = 'all';
+            }
+            if ($localStorage.selectedLevel.id === 2) {
+                vm.selectedDivision = $localStorage.selectedItem.name;
+                vm.selectedCountry = 'all';
+                vm.selectedBusiness = 'all';
+            }
+            if ($localStorage.selectedLevel.id === 3) {
+                vm.selectedDivision = '-';
                 vm.selectedCountry = $localStorage.selectedItem.name;
+                vm.selectedBusiness = 'all';
+            }
+            if ($localStorage.selectedLevel.id === 4) {
+                vm.selectedDivision = $localStorage.selectedItem.division;
+                vm.selectedCountry = $localStorage.selectedItem.country;
+                vm.selectedBusiness = $localStorage.selectedItem.name;
             }
         }
 
@@ -56,11 +72,12 @@
         }
 
         function showTab(tabIndex) {
-            vm.tab1 = vm.tab2 = vm.tab3 = false;
+            vm.tab1 = vm.tab2 = vm.tab3 = vm.tab4 = false;
 
             if (tabIndex === 1) vm.tab1 = true;
             if (tabIndex === 2) vm.tab2 = true;
             if (tabIndex === 3) vm.tab3 = true;
+            if (tabIndex === 4) vm.tab4 = true;
         }
     }
 })();
