@@ -95,6 +95,7 @@
         }
 
         function closeDialog() {
+            delete $localStorage.selectedItem;
 
             vm.$storage = $localStorage.$default({
                 selectedItem: {
@@ -138,7 +139,9 @@
                 });
             }
 
-            $state.go('active-staff');
+            $state.go('active-staff', { reload: true });
+            //$state.reload('active-staff');
+
             $mdDialog.hide();
         }
 
@@ -154,6 +157,7 @@
 
             if (vm.items.length === 0) {
                 $state.go('active-staff');
+                //$state.reload('active-staff');
                 $mdDialog.hide();
             }
         }
@@ -163,7 +167,6 @@
             vm.step2 = false;
 
             vm.selectedItemId = 0;
-
         }
 
         function logout() {
@@ -173,7 +176,6 @@
 
             $state.go('login');
             $mdDialog.hide();
-
         }
     }
 })();

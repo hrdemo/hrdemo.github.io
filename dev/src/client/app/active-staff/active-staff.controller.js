@@ -21,7 +21,7 @@
         vm.tab1 = true;
         vm.tab2 = false;
         vm.tab3 = false;
-
+        vm.changeLocation = changeLocation;
         vm.activate();
 
         function activate() {
@@ -78,6 +78,19 @@
             if (tabIndex === 2) vm.tab2 = true;
             if (tabIndex === 3) vm.tab3 = true;
             if (tabIndex === 4) vm.tab4 = true;
+        }
+        
+        function changeLocation() {
+            delete $localStorage.selectedLevel;
+            delete $localStorage.selectedItem;
+
+            $timeout(function () {
+                $mdDialog.show({
+                    templateUrl: 'app/layout/level-dialog.tmpl.html',
+                    clickOutsideToClose: false
+                });
+            }, 100);
+
         }
     }
 })();
