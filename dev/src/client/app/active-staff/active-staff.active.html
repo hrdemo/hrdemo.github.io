@@ -1,5 +1,789 @@
-<md-content layout-padding ng-controller="MainController as mc">
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+<md-content layout-padding>
+
+
+    <div class="data-container" layout="column" flex="100">
+
+        <div class="data-group grey-cells" flex="100">
+            <div class="data-group__row" layout="row" flex style="height: 70px;">
+                <div class="data-group__cell" flex="30" layout="row" layout-align="center center">
+                    <strong>ACTIVE STAFF MEMBERS</strong>
+                </div>
+                <div class="data-group__header" flex="60" layout="row">
+                    <div class="data-group__cell" flex layout="column">
+                        <div class="data-group__row" flex layout="row" layout-align="center center">
+                            <span><strong>Employees</strong></span>
+                        </div>
+                        <div layout="row" layout-align="space-around center">
+                            <div class="data-group__cell" flex>
+                                <strong>Headcount</strong>
+                            </div>
+                            <div class="data-group__cell data-group__cell--last" flex>
+                                <strong>FTEs</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-group__cell" flex layout="column">
+                        <div class="data-group__row" flex layout="row" layout-align="center center">
+                            <span><strong>Contractors</strong></span>
+                        </div>
+                        <div layout="row" layout-align="space-around center">
+                            <div class="data-group__cell" flex>
+                                <strong>Headcount</strong>
+                            </div>
+                            <div class="data-group__cell data-group__cell--last" flex>
+                                <strong>FTEs</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-group__cell" flex layout="column">
+                        <div class="data-group__row" flex layout="row" layout-align="center center">
+                            <span><strong>TOTAL</strong></span>
+                        </div>
+                        <div layout="row" layout-align="space-around center">
+                            <div class="data-group__cell" flex>
+                                <strong>Headcount</strong>
+                            </div>
+                            <div class="data-group__cell data-group__cell--last" flex>
+                                <strong>FTEs</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-group__header" flex layout="row" layout-align="center center"><span><strong>Average Commitment to Company</strong></span></div>
+            </div>
+            <div class="data-group__row" layout="row" flex style="background-color: whiteSmoke;">
+                <div class="data-group__cell line-header--group" flex="30"><strong>Grand TOTAL</strong></div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                </div>
+            </div>
+            <div class="data-group__row data-group__row--last" layout="row" flex style="background-color: whiteSmoke;">
+                <div class="data-group__cell line-header--group" flex="30"><strong>Average Commitment to Company</strong></div>
+                <div class="data-group__cell" flex="20">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
+                </div>
+                <div class="data-group__cell" flex="20">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
+                </div>
+                <div class="data-group__cell" flex="20">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-splitter"></div>
+
+        <!-- Physicians -->
+        <div class="data-group blue-cells" flex="100">
+            <div class="data-group__row" ng-class="{'data-group__row--last':tc.showPhysicians}" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showPhysicians=!tc.showPhysicians">
+                    <i class="material-icons" ng-if="tc.showPhysicians">add</i>
+                    <i class="material-icons" ng-if="!tc.showPhysicians">remove</i>Physicians</div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showPhysicians">
+                <div class="data-group__cell line-header" flex="30">Primary Care Physicians </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showPhysicians">
+                <div class="data-group__cell line-header" flex="30">Specialists Physicians </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-splitter"></div>
+
+        <!-- Operations -->
+        <div class="data-group green-cells" flex="100">
+            <div class="data-group__row" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showOperations=!tc.showOperations">
+                    <i class="material-icons" ng-if="tc.showOperations">add</i>
+                    <i class="material-icons" ng-if="!tc.showOperations">remove</i>Operations
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+                <div class="data-group__cell line-header" flex="30">Nurses </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+                <div class="data-group__cell line-header" flex="30">Technician Specialists & Lab Specialists </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+                <div class="data-group__cell line-header" flex="30">Other Medical </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+                <div class="data-group__cell line-header" flex="30">Operations Admin </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+                <div class="data-group__cell line-header" flex="30">Operations HO & other OPS s</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+
+            <div class="data-group__row" layout="row" flex>
+                <div class="data-group__cell line-header--group" flex="30">Operations Medical</div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row data-group__row--last" layout="row" flex>
+                <div class="data-group__cell line-header--group" flex="30">Operations Non-medical</div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-splitter"></div>
+
+        <!-- Commercial -->
+        <div class="data-group orange-cells" flex="100">
+            <div class="data-group__row" ng-class="{'data-group__row--last':tc.showCommercials}" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showCommercials=!tc.showCommercials">
+                    <i class="material-icons" ng-if="tc.showCommercials">add</i>
+                    <i class="material-icons" ng-if="!tc.showCommercials">remove</i>Commercial
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Custom Service </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Call Center</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Telesales</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Direct Sales</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Corporate Sales</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Marketing & Communication</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Other Commercial</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-splitter"></div>
+
+        <!-- Office functions -->
+        <div class="data-group brown-cells" flex="100">
+            <div class="data-group__row" ng-class="{'data-group__row--last':tc.showOfficeFunctions}" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
+                    <i class="material-icons" ng-if="tc.showOfficeFunctions">add</i>
+                    <i class="material-icons" ng-if="!tc.showOfficeFunctions">remove</i>Office Functions
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+                <div class="data-group__cell line-header" flex="30">Customer Service </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+                <div class="data-group__cell line-header" flex="30">Finance</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+                <div class="data-group__cell line-header" flex="30">Legal</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+                <div class="data-group__cell line-header" flex="30">HR</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+                <div class="data-group__cell line-header" flex="30">IT</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showOfficeFunctions">
+                <div class="data-group__cell line-header" flex="30">Other Office Functions</div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-model="vm.c1_1" flex>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="data-splitter"></div>
+
+        <!-- Non-medical -->
+        <div class="data-group purple-cells" flex="100">
+            <div class="data-group__row data-group__row--last" layout="row" flex>
+                <div class="data-group__cell line-header--group" flex="30">
+                    Non-medical Total
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                </div>
+            </div>
+    </div>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" ng-if="false">
         <thead>
             <tr>
                 <th rowspan="3" style="vertical-align: middle;">ACTIVE STAFF MEMBERS</th>
@@ -10,26 +794,30 @@
                     <br> to Company</th>
             </tr>
             <tr>
-                <th colspan="2">End of Quarter</th>
-                <th colspan="2">End of Quarter</th>
-                <th colspan="2">End of Quarter</th>
-            </tr>
-            <tr>
-                <th>Head count</th>
+                <th>Headcount</th>
                 <th>FTEs</th>
-                <th>Head count</th>
+                <th>Headcount</th>
                 <th>FTEs</th>
-                <th>Head count</th>
+                <th>Headcount</th>
                 <th>FTEs</th>
-                <th>End of Quarter
-                </th>
             </tr>
         </thead>
         <tbody>
-            <tr class="tr-total tr-total--link" ng-click="tc.showPhysicians=!tc.showPhysicians">
+            <tr class="tr-total no-icon">
+                <td class="mdl-data-table__cell--non-numeric"><strong>Grand TOTAL</strong></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td></td>
+            </tr>
+            <!--// Phycicians -->
+            <tr class="tr-total tr-total--link blue-cells" ng-click="tc.showPhysicians=!tc.showPhysicians">
                 <td id="Physicians" class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="!tc.showPhysicians">add</i>
-                    <i class="material-icons" ng-if="tc.showPhysicians">remove</i>Physicians</td>
+                    <i class="material-icons" ng-if="tc.showPhysicians">add</i>
+                    <i class="material-icons" ng-if="!tc.showPhysicians">remove</i>Physicians</td>
                 <td><strong>{{vm.pcpeHead + vm.speHead}}</strong></td>
                 <td><strong>{{vm.pcpeFte  + vm.speFte}}</strong></td>
                 <td><strong>{{vm.pcpcHead + vm.spcHead}}</strong></td>
@@ -38,7 +826,7 @@
                 <td><strong>{{vm.pcpeFte  + vm.speFte + vm.pcpcFte  + vm.spcFte}}</strong></td>
                 <td><strong>{{((vm.pcpeFte  + vm.speFte + vm.pcpcFte  + vm.spcFte) / (vm.pcpeHead + vm.speHead + vm.pcpcHead + vm.spcHead)) * 100 | number:2}} %</strong></td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPhysicians" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link blue-cells" ng-show="!tc.showPhysicians">
                 <td class="mdl-data-table__cell--non-numeric">Primary Care Physicians</td>
                 <td><input type="number" ng-model="vm.pcpeHead"></td>
                 <td><input type="number" ng-model="vm.pcpeFte"></td>
@@ -48,7 +836,7 @@
                 <td>{{vm.pcpeFte + vm.pcpcFte}}</td>
                 <td>{{(vm.pcpeFte + vm.pcpcFte) / (vm.pcpeHead + vm.pcpcHead) * 100 | number: 2}} %</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showPhysicians" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link blue-cells" ng-show="!tc.showPhysicians">
                 <td class="mdl-data-table__cell--non-numeric">Specialists Physicians</td>
                 <td><input type="number" ng-model="vm.speHead"></td>
                 <td><input type="number" ng-model="vm.speFte"></td>
@@ -58,10 +846,13 @@
                 <td>{{vm.speFte + vm.spcFte}}</td>
                 <td>{{(vm.speFte + vm.spcFte) / (vm.speHead + vm.spcHead) * 100 | number: 2}} %</td>
             </tr>
-            <tr class="tr-total tr-total--link" ng-click="tc.showOperations=!tc.showOperations">
+            <!--// End -->
+
+            <!--// Operations -->
+            <tr class="tr-total tr-total--link green-cells" ng-click="tc.showOperations=!tc.showOperations">
                 <td class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="!tc.showOperations">add</i>
-                    <i class="material-icons" ng-if="tc.showOperations">remove</i><strong>Operations</strong></td>
+                    <i class="material-icons" ng-if="tc.showOperations">add</i>
+                    <i class="material-icons" ng-if="!tc.showOperations">remove</i><strong>Operations</strong></td>
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
@@ -70,60 +861,60 @@
                 <td>2</td>
                 <td>2</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
                 <td class="mdl-data-table__cell--non-numeric">Nurses
                     <md-tooltip md-direction="right">
                         to include: regular and specialists nurses which are working close to the patients; midwifes; nurses from BDP's, </md-tooltip>
                 </td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
                 <td class="mdl-data-table__cell--non-numeric">Technician Specialists & Lab Specialists</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>15%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
                 <td class="mdl-data-table__cell--non-numeric">Other Medical</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
                 <td class="mdl-data-table__cell--non-numeric">Operations Admin</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOperations" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
                 <td class="mdl-data-table__cell--non-numeric">Operations HO & other OPS</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total no-icon">
+            <tr class="tr-total no-icon green-cells">
                 <td class="mdl-data-table__cell--non-numeric"><strong>Operations Medical</strong></td>
                 <td>2</td>
                 <td>2</td>
@@ -133,7 +924,7 @@
                 <td>2</td>
                 <td>11%</td>
             </tr>
-            <tr class="tr-total no-icon">
+            <tr class="tr-total no-icon green-cells">
                 <td class="mdl-data-table__cell--non-numeric"><strong>Operations Non-Medical</strong></td>
                 <td>2</td>
                 <td>2</td>
@@ -143,10 +934,13 @@
                 <td>2</td>
                 <td>2%</td>
             </tr>
-            <tr class="tr-total tr-total--link" ng-click="tc.showCommercials=!tc.showCommercials">
+            <!--// End -->
+
+            <!--// Commercials -->
+            <tr class="tr-total tr-total--link orange-cells" ng-click="tc.showCommercials=!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="!tc.showCommercials">add</i>
-                    <i class="material-icons" ng-if="tc.showCommercials">remove</i><strong>Commercial</strong></td>
+                    <i class="material-icons" ng-if="tc.showCommercials">add</i>
+                    <i class="material-icons" ng-if="!tc.showCommercials">remove</i><strong>Commercial</strong></td>
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
@@ -155,139 +949,144 @@
                 <td>2</td>
                 <td>2</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Customer Service</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Call Center</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>15%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Telesales</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Direct Sales</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Corporate Sales</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Marketing & Communication</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showCommercials" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
                 <td class="mdl-data-table__cell--non-numeric">Other Commercial</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total tr-total--link" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
+            <!--// End -->
+
+            <!--/ Office functions -->
+            <tr class="tr-total tr-total--link brown-cells" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
                 <td class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="!tc.showOfficeFunctions">add</i>
-                    <i class="material-icons" ng-if="tc.showOfficeFunctions">remove</i><strong>Office Functions</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                    <i class="material-icons" ng-if="tc.showOfficeFunctions">add</i>
+                    <i class="material-icons" ng-if="!tc.showOfficeFunctions">remove</i><strong>Office Functions</strong></td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
                 <td class="mdl-data-table__cell--non-numeric">Finance</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
                 <td class="mdl-data-table__cell--non-numeric">Legal</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>15%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
                 <td class="mdl-data-table__cell--non-numeric">HR</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
                 <td class="mdl-data-table__cell--non-numeric">IT</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total__detail tr-total--link" ng-show="tc.showOfficeFunctions" ng-click="vm.selectedIndex=1">
+            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
                 <td class="mdl-data-table__cell--non-numeric">Other Office Functions</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td><input type="number" ng-model="vm.nueHead"></td>
+                <td><input type="number" ng-model="vm.nueFte"></td>
+                <td><input type="number" ng-model="vm.nucHead"></td>
+                <td><input type="number" ng-model="vm.nucFte"></td>
                 <td>2</td>
                 <td>2</td>
                 <td>23%</td>
             </tr>
-            <tr class="tr-total no-icon">
+            <!--// End -->
+
+            <tr class="tr-total no-icon purple-cells">
                 <td class="mdl-data-table__cell--non-numeric"><strong>Non Medical Total</strong></td>
                 <td>2</td>
                 <td>2</td>
@@ -295,16 +1094,7 @@
                 <td>2</td>
                 <td>2</td>
                 <td>2</td>
-                <td rowspan="2"></td>
-            </tr>
-            <tr class="tr-total no-icon">
-                <td class="mdl-data-table__cell--non-numeric"><strong>Grand TOTAL</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
+                <td></td>
             </tr>
             <tr class="tr-total no-icon">
                 <td class="mdl-data-table__cell--non-numeric"><strong>Average Commitment to Company</strong></td>

@@ -27,8 +27,13 @@
         function showSelectLevel() {
             $timeout(function () {
                 $mdDialog.show({
+                    controller: 'LevelDialogController',
+                    controllerAs: 'vm',
                     templateUrl: 'app/layout/level-dialog.tmpl.html',
-                    clickOutsideToClose: false
+                    clickOutsideToClose: false,
+                    locals: {
+                        changeLocation: false
+                    }
                 });
             }, 100);
 

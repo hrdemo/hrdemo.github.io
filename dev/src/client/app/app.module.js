@@ -10,6 +10,7 @@
         /* Feature areas */
         'app.account',
         'app.active-staff',
+        'app.data',
         //'app.dashboard',
         'app.layout'
     ]);

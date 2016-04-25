@@ -1,0 +1,211 @@
+.data-container {
+    @border-color: @grey-400;
+    max-width: 1024px;
+    
+    .border() {
+        border-bottom: solid 2px @border-color;
+        border-right: solid 2px @border-color;
+    }
+    
+    &__header {
+        //.border;
+    }
+    
+    div {
+        //padding: 10px;
+        //border: solid 1px whiteSmoke;
+        vertical-align: middle;   
+    }
+    
+    .data-group {
+        //border: solid 1px @border-color;
+        
+        &__header {
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        &__cell {
+            font-size: 0.85rem;
+            //padding: 8px 5px;
+            text-align: center;
+            border-right: solid 1px @border-color;
+            
+            &--last {
+                border-right: none;
+            }
+            
+            > input {
+                width: 100%;
+                padding: 13px;
+                text-align: center;
+                border: none;
+                background-color: #FFF;
+            }
+            > .total {
+                padding: 10px;
+                display: block;
+                text-align: center;
+                font-weight: 500;
+            }
+        }
+        
+        &__row {
+            border-bottom: solid 1px @border-color;
+            transition: all 0.3s ease-in-out;
+            transition: display 0.7s ease;
+ 
+            height: 41px;
+            
+            &--last {
+                border-bottom: none;
+            }
+            
+            &.hidden199 {
+                opacity: 0;
+                height: 0;
+                display: none;
+            }
+        }
+    
+    }
+    .line-header,
+    .line-header--group {
+        text-align: left;
+        padding: 10px;
+    }
+    
+    .line-header--group {
+        font-weight: 500;
+        
+        i {
+            vertical-align: bottom;
+            margin-right: 5px;
+            font-size: 2em;
+        }
+    }
+    
+    .line-header {
+        padding-left: 40px;
+    }
+}
+
+.blue-cells {   
+    border: solid 1px @blue-400;
+    .data-group__cell {
+        //border: solid 1px @blue-400;
+    }
+    div, input {
+        background-color: @blue-100;
+    }
+    input {
+        &:hover, &:focus {
+            background: #FFF!important;
+        }
+    }
+}
+.green-cells { 
+    border: solid 1px @green-400;
+   
+    div, input {
+        background-color: @green-100;
+        //border-color: @green-400;
+    }
+    input {
+        &:hover, &:focus {
+            background: #FFF!important;
+        }
+    }
+}
+.orange-cells {   
+    border: solid 1px @orange-400;
+    
+    div, input {
+        background-color: @orange-100;
+        //border-color: @orange-400;
+    }
+    input {
+        &:hover, &:focus {
+            background: #FFF!important;
+        }
+    }
+}
+.brown-cells {    
+    border: solid 1px @brown-400;
+
+    div, input {
+        background-color: @brown-100;
+        //border-color: @brown-400;
+    }
+    input {
+        &:hover, &:focus {
+            background: #FFF!important;
+        }
+    }
+}
+.purple-cells {    
+    border: solid 1px @purple-400;
+    
+    div, input {
+        background-color: @purple-100;
+        //border-color: @purple-400;
+    }
+    input {
+        &:hover, &:focus {
+            background: #FFF!important;
+        }
+    }
+}
+.grey-cells {    
+    border: solid 1px @grey-400;
+    
+    div, input {
+        background-color: @grey-100;
+        //border-color: @purple-400;
+    }
+    input {
+        &:hover, &:focus {
+            background: #FFF!important;
+        }
+    }
+}
+
+.data-splitter {
+    height: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0;
+    } 
+    
+.click {
+    cursor: pointer;
+    outline: none;
+}
+
+
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
+
+.check-element {
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+}

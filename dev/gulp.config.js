@@ -44,6 +44,7 @@ module.exports = function() {
             '**/*.js'
         ],
         less: client + 'styles/less/styles.less',
+        lesswatch: client + 'styles/less/*.less',
         report: report,
         root: root,
         server: server,

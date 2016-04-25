@@ -5,24 +5,29 @@
     </header>
     <md-content layout="row">
         <md-card flex="60">
-            <md-card-content layout="row" layout-wrap>
-                <div flex="50">
-                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Division: <strong>{{vm.selectedDivision}}</strong></h5>
-                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Country: <strong>{{vm.selectedCountry}}</strong></h5>
+            <md-card-content>
+                <div layout="row">
+                    <div flex="35">
+                        <h5 style="margin: 10px 0 10px 0; font-weight: 300">Division: <strong>{{ vm.selectedDivision }}</strong></h5>
+                        <h5 style="margin: 10px 0 10px 0; font-weight: 300">Country: <strong>{{ vm.selectedCountry }}</strong></h5>
+                    </div>
+                    <div flex="6550">
+                        <h5 style="margin: 10px 0 10px 0; font-weight: 300">Business: <strong>{{ vm.selectedBusiness }}</strong></h5>
+                        <h5 style="margin: 10px 0 10px 0; font-weight: 300">Location: <strong>{{ vm.selectedLocation }}</strong></h5>
+                    </div>
                 </div>
-                <div flex="50">
-                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Business: <strong>{{vm.selectedBusiness}}</strong></h5>
-                    <h5 style="margin: 10px 0 10px 0; font-weight: 300">Location: <strong>all</strong></h5>
+                <div layout="row" layout-align="space-between center" style="margin-top: 10px;">
+                    <div>Period: <strong>JAN 1, 2016 - MAR 31, 2016 (Q1 2016)</strong>
+                        <md-icon class="material-icons">info_outline
+                            <md-tooltip md-direction="right">
+                                Open till 20th of April
+                            </md-tooltip>
+                        </md-icon>
+                    </div>
+                    <div>
+                        <md-button ng-click="vm.changeLocation($event)">change location</md-button>
+                    </div>
                 </div>
-
-                <p flext="100">Period: <strong>JAN 1, 2016 - MAR 31, 2016 (Q1 2016)</strong>
-                    <md-icon class="material-icons">info_outline
-                        <md-tooltip md-direction="right">
-                            Open till 20th of April
-                        </md-tooltip>
-                    </md-icon>
-                    <md-button ng-click="vm.changeLocation()">change location</md-button>
-                </p>
             </md-card-content>
         </md-card>
 

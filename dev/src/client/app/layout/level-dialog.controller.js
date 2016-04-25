@@ -6,7 +6,7 @@
         .controller('LevelDialogController', LevelDialogController);
 
     /* @ngInject */
-    function LevelDialogController($scope, $mdDialog, $state, $timeout, $localStorage) {
+    function LevelDialogController($scope, $mdDialog, $state, $timeout, $localStorage, changeLocation, dataservice) {
         var vm = this;
         vm.title = 'Dashboard';
         vm.closeDialog = closeDialog;
@@ -16,77 +16,7 @@
         vm.step1 = true;
         vm.step2 = false;
         vm.logout = logout;
-        vm.dataLevels = [
-            {
-                id: 1, name: 'MGOC', desc: 'Medicover and Synevo divisions',
-                items: []
-            },
-            {
-                id: 2, name: 'Division', desc: 'Medicover or Synevo division',
-                items: [
-                    { id: 1, name: 'Medicover' },
-                    { id: 2, name: 'Synevo' }
-                ]
-            },
-            {
-                id: 3, name: 'Country', desc: 'Poland, Romania, Ukraine, Germany...',
-                items: [
-                    { id: 1, name: 'Poland' },
-                    { id: 2, name: 'Romania' },
-                    { id: 3, name: 'Ukraine' },
-                    { id: 4, name: 'Germany' }
-                ]
-            },
-            {
-                id: 4, name: 'Business Unit', desc: 'Company',
-                items: [
-                    {
-                        id: 1, name: 'Medicover Poland Sp z o.o',
-                        division: 'Medicover',
-                        country: 'Poland'
-                    },
-                    {
-                        id: 2, name: 'Damiana Medical Center',
-                        division: 'Medicover',
-                        country: 'Poland'
-                    },
-                    {
-                        id: 3, name: 'Invimed',
-                        division: 'Medicover',
-                        country: 'Poland'
-                    },
-                    {
-                        id: 4, name: 'Medicover Romania',
-                        division: 'Medicover',
-                        country: 'Romania'
-                    },
-                    {
-                        id: 5, name: 'Peachea Hospital',
-                        division: 'Medicover',
-                        country: 'Romania'
-                    },
-                    {
-                        id: 6, name: 'Intersono Ukraine',
-                        division: 'Synevo',
-                        country: 'Ukraine'
-                    },
-                    {
-                        id: 7, name: 'Synevo Romania',
-                        division: 'Synevo',
-                        country: 'Romania'
-                    }
-                ]
-            },
-            {
-                id: 5, name: 'Location', desc: 'Laboratory or Medical Center',
-                items: [
-                    { id: 1, name: 'Lab 1' },
-                    { id: 2, name: 'Lab 2' },
-                    { id: 3, name: 'Warsaw CM Atrium' },
-                    { id: 4, name: 'Cracow CM Borowieckiego' }
-                ]
-            }
-        ];
+        vm.dataLevels = dataservice.getLevels();
 
         vm.selectedItemId;
 
@@ -97,22 +27,13 @@
         function closeDialog() {
             delete $localStorage.selectedItem;
 
-            vm.$storage = $localStorage.$default({
-                selectedItem: {
-                    id: vm.selectedItem.id,
-                    name: vm.selectedItem.name,
-                    division: '',
-                    country: ''
-                }
-            });
-
             if ($localStorage.selectedLevel.id === 2) {
                 vm.$storage = $localStorage.$default({
                     selectedItem: {
-                        id: vm.selectedItem.id,
                         name: vm.selectedItem.name,
-                        division: '',
-                        country: ''
+                        country: 'all',
+                        business: 'all',
+                        location: 'all'
                     }
                 });
             }
@@ -121,9 +42,10 @@
                 vm.$storage = $localStorage.$default({
                     selectedItem: {
                         id: vm.selectedItem.id,
+                        division: '--',
                         name: vm.selectedItem.name,
-                        division: '',
-                        country: ''
+                        business: 'all',
+                        location: 'all'
                     }
                 });
             }
@@ -132,15 +54,32 @@
                 vm.$storage = $localStorage.$default({
                     selectedItem: {
                         id: vm.selectedItem.id,
-                        name: vm.selectedItem.name,
                         division: vm.selectedItem.division,
-                        country: vm.selectedItem.country
+                        country: vm.selectedItem.country,
+                        name: vm.selectedItem.name,
+                        business: 'all',
+                        location: 'all'
                     }
                 });
             }
 
-            $state.go('active-staff', { reload: true });
-            //$state.reload('active-staff');
+            if ($localStorage.selectedLevel.id === 5) {
+                vm.$storage = $localStorage.$default({
+                    selectedItem: {
+                        id: vm.selectedItem.id,
+                        division: vm.selectedItem.division,
+                        country: vm.selectedItem.country,
+                        business: vm.selectedItem.business,
+                        name: vm.selectedItem.name,
+                    }
+                });
+            }
+
+            if (changeLocation) {
+                $state.reload('active-staff');
+            } else {
+                $state.go('active-staff', { reload: true });
+            }
 
             $mdDialog.hide();
         }
@@ -152,12 +91,18 @@
             vm.items = vm.dataLevels[vm.selectedLevel.id - 1].items;
 
             vm.$storage = $localStorage.$default({
-                selectedLevel: { id: vm.selectedLevel.id, name: vm.selectedLevel.name }
+                selectedLevel: {
+                    id: vm.selectedLevel.id,
+                    name: vm.selectedLevel.name
+                }
             });
 
             if (vm.items.length === 0) {
-                $state.go('active-staff');
-                //$state.reload('active-staff');
+                if (changeLocation) {
+                    $state.reload('active-staff');
+                } else {
+                    $state.go('active-staff', { reload: true });
+                }
                 $mdDialog.hide();
             }
         }

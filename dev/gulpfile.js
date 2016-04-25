@@ -97,7 +97,7 @@ gulp.task('images', ['clean-images'], function() {
 });
 
 gulp.task('less-watcher', function() {
-    gulp.watch([config.less], ['styles']);
+    gulp.watch([config.lesswatch], ['styles']);
 });
 
 /**

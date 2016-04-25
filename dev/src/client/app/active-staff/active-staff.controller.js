@@ -28,24 +28,42 @@
             if ($localStorage.userName === 'localhr') {
                 vm.isLocal = true;
             }
+            vm.selectedDivision = '--';
+            vm.selectedCountry = 'all';
+            vm.selectedBusiness = 'all';
+            vm.selectedLocation = 'all';
+
+            // group
             if ($localStorage.selectedLevel.id === 1) {
                 vm.selectedDivision = $localStorage.selectedLevel.name;
-                vm.selectedCountry = 'all';
             }
+            // division
             if ($localStorage.selectedLevel.id === 2) {
                 vm.selectedDivision = $localStorage.selectedItem.name;
-                vm.selectedCountry = 'all';
-                vm.selectedBusiness = 'all';
+                vm.selectedCountry  = $localStorage.selectedItem.country;
+                vm.selectedBusiness = $localStorage.selectedItem.business;
+                vm.selectedLocation = $localStorage.selectedItem.location;
             }
+            // country
             if ($localStorage.selectedLevel.id === 3) {
-                vm.selectedDivision = '-';
-                vm.selectedCountry = $localStorage.selectedItem.name;
-                vm.selectedBusiness = 'all';
+                vm.selectedDivision = $localStorage.selectedItem.division;
+                vm.selectedCountry  = $localStorage.selectedItem.name;
+                vm.selectedBusiness = $localStorage.selectedItem.business;
+                vm.selectedLocation = $localStorage.selectedItem.location;
             }
+            // business
             if ($localStorage.selectedLevel.id === 4) {
                 vm.selectedDivision = $localStorage.selectedItem.division;
-                vm.selectedCountry = $localStorage.selectedItem.country;
+                vm.selectedCountry  = $localStorage.selectedItem.country;
                 vm.selectedBusiness = $localStorage.selectedItem.name;
+                vm.selectedLocation = $localStorage.selectedItem.location;
+            }
+            // location
+            if ($localStorage.selectedLevel.id === 5) {
+                vm.selectedDivision = $localStorage.selectedItem.division;
+                vm.selectedCountry  = $localStorage.selectedItem.country;
+                vm.selectedBusiness = $localStorage.selectedItem.business;
+                vm.selectedLocation = $localStorage.selectedItem.name
             }
         }
 
@@ -79,15 +97,20 @@
             if (tabIndex === 3) vm.tab3 = true;
             if (tabIndex === 4) vm.tab4 = true;
         }
-        
-        function changeLocation() {
+
+        function changeLocation($event) {
             delete $localStorage.selectedLevel;
             delete $localStorage.selectedItem;
 
             $timeout(function () {
                 $mdDialog.show({
+                    controller: 'LevelDialogController',
+                    controllerAs: 'vm',
                     templateUrl: 'app/layout/level-dialog.tmpl.html',
-                    clickOutsideToClose: false
+                    clickOutsideToClose: false,
+                    locals: {
+                        changeLocation: true
+                    }
                 });
             }, 100);
 
