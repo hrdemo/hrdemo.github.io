@@ -57,30 +57,31 @@
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_2 + vm.c2_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_3 + vm.c2_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_4 + vm.c2_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_1 + vm.c1_3 + vm.c2_1 + vm.c2_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_2 + vm.c1_4 + vm.c2_2 + vm.c2_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
+                    
                 </div>
             </div>
             <div class="data-group__row data-group__row--last" layout="row" flex style="background-color: whiteSmoke;">
                 <div class="data-group__cell line-header--group" flex="30"><strong>Average Commitment to Company</strong></div>
                 <div class="data-group__cell" flex="20">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
+                    <span class="total">{{(vm.c1_2 + vm.c2_2)/(vm.c1_1 + vm.c2_1)*100 || 0 | number:0}}%</span>
                 </div>
                 <div class="data-group__cell" flex="20">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
+                    <span class="total">{{(vm.c1_4 + vm.c2_4)/(vm.c1_3 + vm.c2_3)*100 || 0 | number:0}}%</span>
                 </div>
                 <div class="data-group__cell" flex="20">
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}%</span>
@@ -97,76 +98,76 @@
         <div class="data-group blue-cells" flex="100">
             <div class="data-group__row" ng-class="{'data-group__row--last':tc.showPhysicians}" layout="row" flex>
                 <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showPhysicians=!tc.showPhysicians">
-                    <i class="material-icons" ng-if="tc.showPhysicians">add</i>
-                    <i class="material-icons" ng-if="!tc.showPhysicians">remove</i>Physicians</div>
+                    <span ng-if="tc.showPhysicians"><i class="material-icons">add</i>Physicians</span>
+                    <span ng-if="!tc.showPhysicians"><i class="material-icons">remove</i>Physicians</span></div>
                 <div class="data-group__cell" flex="10">
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_2 + vm.c2_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_3 + vm.c2_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_4 + vm.c2_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_1 + vm.c1_3 + vm.c2_1 + vm.c2_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_2 + vm.c1_4 + vm.c2_2 + vm.c2_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c1_2 + vm.c1_4 + vm.c2_2 + vm.c2_4)/(vm.c1_1 + vm.c1_3 + vm.c2_1 + vm.c2_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
             <div class="data-group__row" layout="row" flex ng-show="!tc.showPhysicians">
                 <div class="data-group__cell line-header" flex="30">Primary Care Physicians </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c1_1" ng-init="vm.c1_1=33" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c1_2" ng-init="vm.c1_2=21" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c1_3" ng-init="vm.c1_3=51" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c1_4" ng-init="vm.c1_4=23" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <span class="total">{{vm.c1_1 + vm.c1_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <span class="total">{{vm.c1_2 + vm.c1_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c1_2 + vm.c1_4)/(vm.c1_1 + vm.c1_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
             <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showPhysicians">
                 <div class="data-group__cell line-header" flex="30">Specialists Physicians </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c2_1" ng-init="vm.c2_1=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c2_2" ng-init="vm.c2_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c2_3" ng-init="vm.c2_3=33" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c2_4" ng-init="vm.c2_4=12" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <span class="total">{{vm.c2_1 + vm.c2_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <span class="total">{{vm.c2_2 + vm.c2_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c2_2 + vm.c2_4)/(vm.c2_1 + vm.c2_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
         </div>
@@ -177,50 +178,50 @@
         <div class="data-group green-cells" flex="100">
             <div class="data-group__row" layout="row" flex>
                 <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showOperations=!tc.showOperations">
-                    <i class="material-icons" ng-if="tc.showOperations">add</i>
-                    <i class="material-icons" ng-if="!tc.showOperations">remove</i>Operations
+                    <span ng-if="tc.showOperations"><i class="material-icons">add</i>Operations</span>
+                    <span ng-if="!tc.showOperations"><i class="material-icons">remove</i>Operations</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_1 + vm.c4_1 + vm.c5_1 + vm.c6_1 + vm.c7_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_2 + vm.c4_2 + vm.c5_2 + vm.c6_2 + vm.c7_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_3 + vm.c4_3 + vm.c5_3 + vm.c6_3 + vm.c7_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_4 + vm.c4_4 + vm.c5_4 + vm.c6_4 + vm.c7_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_5 + vm.c4_5 + vm.c5_5 + vm.c6_5 + vm.c7_5 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_6 + vm.c4_6 + vm.c5_6 + vm.c6_6 + vm.c7_6 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c3_1 + vm.c2_1 || 0}}</span>
                 </div>
             </div>
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
                 <div class="data-group__cell line-header" flex="30">Nurses </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c3_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c3_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c3_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c3_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c3_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c3_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -229,22 +230,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
                 <div class="data-group__cell line-header" flex="30">Technician Specialists & Lab Specialists </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c4_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c4_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c4_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c4_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c4_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c4_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -253,22 +254,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
                 <div class="data-group__cell line-header" flex="30">Other Medical </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c5_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c5_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c5_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c5_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c5_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c5_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -277,22 +278,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
                 <div class="data-group__cell line-header" flex="30">Operations Admin </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c6_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c6_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c6_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c6_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c6_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c6_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -301,22 +302,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
                 <div class="data-group__cell line-header" flex="30">Operations HO & other OPS s</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c7_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c7_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c7_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c7_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c7_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c7_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -379,50 +380,47 @@
         <div class="data-group orange-cells" flex="100">
             <div class="data-group__row" ng-class="{'data-group__row--last':tc.showCommercials}" layout="row" flex>
                 <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showCommercials=!tc.showCommercials">
-                    <i class="material-icons" ng-if="tc.showCommercials">add</i>
-                    <i class="material-icons" ng-if="!tc.showCommercials">remove</i>Commercial
+                    <span ng-if="tc.showCommercials"><i class="material-icons">add</i>Commercial</span>
+                    <span ng-if="!tc.showCommercials"><i class="material-icons">remove</i>Commercial</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c7_1 + vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c7_2 + vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c7_3 + vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c7_4 + vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c7_5 + vm.c8_5 + vm.c9_5 + vm.c10_5 + vm.c11_5 + vm.c12_5 + vm.c13_5 + vm.c14_5 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
-                </div>
-                <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c7_6 + vm.c8_6 + vm.c9_6 + vm.c10_6 + vm.c11_6 + vm.c12_6 + vm.c13_6 + vm.c14_6 || 0}}</span>
                 </div>
             </div>
             <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Custom Service </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c8_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c8_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c8_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c8_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c8_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c8_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -431,22 +429,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Call Center</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c9_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c9_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c9_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c9_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c9_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c9_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -455,22 +453,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Telesales</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c10_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c10_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c10_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c10_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c10_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c10_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -479,22 +477,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Direct Sales</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c11_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c11_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c11_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c11_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c11_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c11_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -503,22 +501,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Corporate Sales</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c12_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c12_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c12_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c12_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c12_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c12_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -527,22 +525,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Marketing & Communication</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c13_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c13_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c13_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c13_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c13_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c13_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -551,22 +549,22 @@
             <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Other Commercial</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c14_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c14_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c14_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c14_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c14_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c14_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -580,50 +578,47 @@
         <div class="data-group brown-cells" flex="100">
             <div class="data-group__row" ng-class="{'data-group__row--last':tc.showOfficeFunctions}" layout="row" flex>
                 <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
-                    <i class="material-icons" ng-if="tc.showOfficeFunctions">add</i>
-                    <i class="material-icons" ng-if="!tc.showOfficeFunctions">remove</i>Office Functions
+                    <span ng-if="tc.showOfficeFunctions"><i class="material-icons">add</i>Office Functions</span>
+                    <span ng-if="!tc.showOfficeFunctions"><i class="material-icons">remove</i>Office Functions</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 + vm.c20_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 + vm.c20_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3 + vm.c20_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4 + vm.c20_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c15_5 + vm.c16_5 + vm.c17_5 + vm.c18_5 + vm.c19_5 + vm.c20_5 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
-                </div>
-                <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c15_6 + vm.c16_6 + vm.c17_6 + vm.c18_6 + vm.c19_6 + vm.c20_6 || 0}}</span>
                 </div>
             </div>
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Customer Service </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c15_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c15_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c15_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c15_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c15_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c15_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -632,22 +627,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Finance</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c16_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c16_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c16_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c16_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c16_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c16_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -656,22 +651,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Legal</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c17_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c17_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c17_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c17_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c17_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c17_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -680,22 +675,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">HR</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c18_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c18_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c18_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c18_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c18_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c18_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -704,22 +699,22 @@
             <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">IT</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c19_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c19_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c19_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c19_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c19_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c19_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
@@ -728,22 +723,22 @@
             <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Other Office Functions</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c20_1" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c20_2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c20_3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c20_4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c20_5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" flex>
+                    <input type="number" ng-model="vm.c20_6" flex>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
