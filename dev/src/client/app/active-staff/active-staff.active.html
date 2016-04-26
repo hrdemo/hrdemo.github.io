@@ -1,8 +1,8 @@
 <md-content layout-padding>
 
-
     <div class="data-container" layout="column" flex="100">
 
+        <!-- Header -->
         <div class="data-group grey-cells" flex="100">
             <div class="data-group__row" layout="row" flex style="height: 70px;">
                 <div class="data-group__cell" flex="30" layout="row" layout-align="center center">
@@ -72,7 +72,7 @@
                     <span class="total">{{vm.c1_2 + vm.c1_4 + vm.c2_2 + vm.c2_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    
+                    <!-- empty cell -->
                 </div>
             </div>
             <div class="data-group__row data-group__row--last" layout="row" flex style="background-color: whiteSmoke;">
@@ -96,10 +96,10 @@
 
         <!-- Physicians -->
         <div class="data-group blue-cells" flex="100">
-            <div class="data-group__row" ng-class="{'data-group__row--last':tc.showPhysicians}" layout="row" flex>
-                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showPhysicians=!tc.showPhysicians">
-                    <span ng-if="tc.showPhysicians"><i class="material-icons">add</i>Physicians</span>
-                    <span ng-if="!tc.showPhysicians"><i class="material-icons">remove</i>Physicians</span></div>
+            <div class="data-group__row" ng-class="{'data-group__row--last':!vm.showPhysicians}" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="vm.showPhysicians=!vm.showPhysicians">
+                    <span ng-if="!vm.showPhysicians"><i class="material-icons">add</i>Physicians</span>
+                    <span ng-if="vm.showPhysicians"><i class="material-icons">remove</i>Physicians</span></div>
                 <div class="data-group__cell" flex="10">
                     <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
                 </div>
@@ -122,19 +122,19 @@
                     <span class="total">{{(vm.c1_2 + vm.c1_4 + vm.c2_2 + vm.c2_4)/(vm.c1_1 + vm.c1_3 + vm.c2_1 + vm.c2_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showPhysicians">
-                <div class="data-group__cell line-header" flex="30">Primary Care Physicians </div>
+            <div class="data-group__row" layout="row" flex ng-show="vm.showPhysicians">
+                <div class="data-group__cell line-header" flex="30">Primary Care Physicians</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_1" ng-init="vm.c1_1=33" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c1_1" ng-init="vm.c1_1=33" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_2" ng-init="vm.c1_2=21" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c1_2" ng-init="vm.c1_2=21" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_3" ng-init="vm.c1_3=51" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c1_3" ng-init="vm.c1_3=51" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c1_4" ng-init="vm.c1_4=23" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c1_4" ng-init="vm.c1_4=23" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
                     <span class="total">{{vm.c1_1 + vm.c1_3 || 0}}</span>
@@ -146,19 +146,19 @@
                     <span class="total">{{(vm.c1_2 + vm.c1_4)/(vm.c1_1 + vm.c1_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showPhysicians">
+            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="vm.showPhysicians">
                 <div class="data-group__cell line-header" flex="30">Specialists Physicians </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c2_1" ng-init="vm.c2_1=11" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c2_1" ng-init="vm.c2_1=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c2_2" ng-init="vm.c2_2=22" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c2_2" ng-init="vm.c2_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c2_3" ng-init="vm.c2_3=33" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c2_3" ng-init="vm.c2_3=33" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c2_4" ng-init="vm.c2_4=12" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c2_4" ng-init="vm.c2_4=12" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
                     <span class="total">{{vm.c2_1 + vm.c2_3 || 0}}</span>
@@ -177,9 +177,9 @@
         <!-- Operations -->
         <div class="data-group green-cells" flex="100">
             <div class="data-group__row" layout="row" flex>
-                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showOperations=!tc.showOperations">
-                    <span ng-if="tc.showOperations"><i class="material-icons">add</i>Operations</span>
-                    <span ng-if="!tc.showOperations"><i class="material-icons">remove</i>Operations</span>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="vm.showOperations=!vm.showOperations">
+                    <span ng-if="!vm.showOperations"><i class="material-icons">add</i>Operations</span>
+                    <span ng-if="vm.showOperations"><i class="material-icons">remove</i>Operations</span>
                 </div>
                 <div class="data-group__cell" flex="10">
                     <span class="total">{{vm.c3_1 + vm.c4_1 + vm.c5_1 + vm.c6_1 + vm.c7_1 || 0}}</span>
@@ -194,182 +194,190 @@
                     <span class="total">{{vm.c3_4 + vm.c4_4 + vm.c5_4 + vm.c6_4 + vm.c7_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c3_5 + vm.c4_5 + vm.c5_5 + vm.c6_5 + vm.c7_5 || 0}}</span>
+                    <span class="total">{{vm.c3_1 + vm.c4_1 + vm.c5_1 + vm.c6_1 + vm.c7_1 + vm.c3_3 + vm.c4_3 + vm.c5_3 + vm.c6_3 + vm.c7_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c3_6 + vm.c4_6 + vm.c5_6 + vm.c6_6 + vm.c7_6 || 0}}</span>
+                    <span class="total">{{vm.c3_2 + vm.c4_2 + vm.c5_2 + vm.c6_2 + vm.c7_2 + vm.c3_4 + vm.c4_4 + vm.c5_4 + vm.c6_4 + vm.c7_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c3_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c3_2 + vm.c4_2 + vm.c5_2 + vm.c6_2 + vm.c7_2 + vm.c3_4 + vm.c4_4 + vm.c5_4 + vm.c6_4 + vm.c7_4)/(vm.c3_1 + vm.c4_1 + vm.c5_1 + vm.c6_1 + vm.c7_1 + vm.c3_3 + vm.c4_3 + vm.c5_3 + vm.c6_3 + vm.c7_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOperations">
                 <div class="data-group__cell line-header" flex="30">Nurses </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c3_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c3_1" ng-init="vm.c3_1=33" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c3_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c3_2" ng-init="vm.c3_2=21" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c3_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c3_3" ng-init="vm.c3_3=46" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c3_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c3_4" ng-init="vm.c3_4=71" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c3_5" flex>
+                    <span class="total">{{vm.c3_1 + vm.c3_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c3_6" flex>
+                    <span class="total">{{vm.c3_2 + vm.c3_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c3_2 + vm.c3_4)/(vm.c3_1 + vm.c3_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOperations">
                 <div class="data-group__cell line-header" flex="30">Technician Specialists & Lab Specialists </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c4_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c4_1" ng-init="vm.c4_1=34" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c4_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c4_2" ng-init="vm.c4_2=23" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c4_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c4_3" ng-init="vm.c4_3=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c4_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c4_4" ng-init="vm.c4_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c4_5" flex>
+                    <span class="total">{{vm.c4_1 + vm.c4_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c4_6" flex>
+                    <span class="total">{{vm.c4_1 + vm.c4_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c4_2 + vm.c4_4)/(vm.c4_1 + vm.c4_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOperations">
                 <div class="data-group__cell line-header" flex="30">Other Medical </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c5_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c5_1" ng-init="vm.c5_1=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c5_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c5_2" ng-init="vm.c5_2=51" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c5_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c5_3" ng-init="vm.c5_3=15" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c5_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c5_4" ng-init="vm.c5_4=25" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c5_5" flex>
+                    <span class="total">{{vm.c5_1 + vm.c5_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c5_6" flex>
+                    <span class="total">{{vm.c5_2 + vm.c5_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c5_2 + vm.c5_4)/(vm.c5_1 + vm.c5_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOperations">
                 <div class="data-group__cell line-header" flex="30">Operations Admin </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c6_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c6_1" ng-init="vm.c6_1=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c6_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c6_2" ng-init="vm.c6_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c6_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c6_3" ng-init="vm.c6_3=44" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c6_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c6_4" ng-init="vm.c6_4=3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c6_5" flex>
+                    <span class="total">{{vm.c6_1 + vm.c6_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c6_6" flex>
+                    <span class="total">{{vm.c6_2 + vm.c6_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c6_2 + vm.c6_4)/(vm.c6_1 + vm.c6_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOperations">
-                <div class="data-group__cell line-header" flex="30">Operations HO & other OPS s</div>
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOperations">
+                <div class="data-group__cell line-header" flex="30">Operations HO & other OPS</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c7_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c7_1" ng-init="vm.c7_1=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c7_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c7_2" ng-init="vm.c7_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c7_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c7_3" ng-init="vm.c7_3=44" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c7_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c7_4" ng-init="vm.c7_4=3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c7_5" flex>
+                    <span class="total">{{vm.c7_1 + vm.c7_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c7_6" flex>
+                    <span class="total">{{vm.c7_2 + vm.c7_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c7_2 + vm.c7_4)/(vm.c7_1 + vm.c7_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
 
             <div class="data-group__row" layout="row" flex>
-                <div class="data-group__cell line-header--group" flex="30">Operations Medical</div>
-                <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                <div class="data-group__cell line-header--group" flex="30">Operations Medical
+                    <md-tooltip md-direction="right">
+                        Total Phycicians + Nurses + Technician Specialists & Lab Specialists + Other Medical
+                    </md-tooltip>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 + vm.c3_1 + vm.c4_1 + vm.c5_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_2 + vm.c2_2 + vm.c3_2 + vm.c4_2 + vm.c5_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_3 + vm.c2_3 + vm.c3_3 + vm.c4_3 + vm.c5_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_4 + vm.c2_4 + vm.c3_4 + vm.c4_4 + vm.c5_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c1_1 + vm.c2_1 + vm.c3_1 + vm.c4_1 + vm.c5_1 + vm.c1_3 + vm.c2_3 + vm.c3_3 + vm.c4_3 + vm.c5_3 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c1_2 + vm.c2_2 + vm.c3_2 + vm.c4_2 + vm.c5_2 + vm.c1_4 + vm.c2_4 + vm.c3_4 + vm.c4_4 + vm.c5_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c1_2 + vm.c2_2 + vm.c3_2 + vm.c4_2 + vm.c5_2 + vm.c1_4 + vm.c2_4 + vm.c3_4 + vm.c4_4 + vm.c5_4)/(vm.c1_1 + vm.c2_1 + vm.c3_1 + vm.c4_1 + vm.c5_1 + vm.c1_3 + vm.c2_3 + vm.c3_3 + vm.c4_3 + vm.c5_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
             <div class="data-group__row data-group__row--last" layout="row" flex>
-                <div class="data-group__cell line-header--group" flex="30">Operations Non-medical</div>
-                <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                <div class="data-group__cell line-header--group" flex="30">Operations Non-medical
+                    <md-tooltip md-direction="right">
+                        Operations Admin + Operations HO & other OPS
+                    </md-tooltip>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c6_1 + vm.c7_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c6_2 + vm.c7_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c6_3 + vm.c7_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c6_4 + vm.c7_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{vm.c6_1 + vm.c6_3 + vm.c7_1 + vm.c7_3 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c6_2 + vm.c6_4 + vm.c7_2 + vm.c7_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c6_2 + vm.c6_4 + vm.c7_2 + vm.c7_4)/(vm.c6_1 + vm.c6_3 + vm.c7_1 + vm.c7_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
         </div>
@@ -378,196 +386,199 @@
 
         <!-- Commercial -->
         <div class="data-group orange-cells" flex="100">
-            <div class="data-group__row" ng-class="{'data-group__row--last':tc.showCommercials}" layout="row" flex>
-                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showCommercials=!tc.showCommercials">
-                    <span ng-if="tc.showCommercials"><i class="material-icons">add</i>Commercial</span>
-                    <span ng-if="!tc.showCommercials"><i class="material-icons">remove</i>Commercial</span>
+            <div class="data-group__row" ng-class="{'data-group__row--last':!vm.showCommercials}" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="vm.showCommercials=!vm.showCommercials">
+                    <span ng-if="!vm.showCommercials"><i class="material-icons">add</i>Commercial</span>
+                    <span ng-if="vm.showCommercials"><i class="material-icons">remove</i>Commercial</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c7_1 + vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 || 0}}</span>
+                    <span class="total">{{vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c7_2 + vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 || 0}}</span>
+                    <span class="total">{{vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c7_3 + vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3 || 0}}</span>
+                    <span class="total">{{vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c7_4 + vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4 || 0}}</span>
+                    <span class="total">{{vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c7_5 + vm.c8_5 + vm.c9_5 + vm.c10_5 + vm.c11_5 + vm.c12_5 + vm.c13_5 + vm.c14_5 || 0}}</span>
+                    <span class="total">{{vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 + vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c7_6 + vm.c8_6 + vm.c9_6 + vm.c10_6 + vm.c11_6 + vm.c12_6 + vm.c13_6 + vm.c14_6 || 0}}</span>
-                </div>
-            </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
-                <div class="data-group__cell line-header" flex="30">Custom Service </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c8_1" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c8_2" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c8_3" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c8_4" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c8_5" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c8_6" flex>
+                    <span class="total">{{vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 + vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 + vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4)/(vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 + vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showCommercials">
+                <div class="data-group__cell line-header" flex="30">Customer Service </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c8_1" ng-init="vm.c8_1=22" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c8_2" ng-init="vm.c8_2=3" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c8_3" ng-init="vm.c8_3=5" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c8_4" ng-init="vm.c8_4=51" flex>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c8_1 + vm.c8_3 || 0}}</span>
+                </div>
+                <div class="data-group__cell" flex="10">
+                    <span class="total">{{vm.c8_2 + vm.c8_4 || 0}}</span>
+                </div>
+                <div class="data-group__cell data-group__cell--last" flex>
+                    <span class="total">{{(vm.c8_2 + vm.c8_4)/(vm.c8_1 + vm.c8_3)*100 || 0 | number:0}}%</span>
+                </div>
+            </div>
+            <div class="data-group__row" layout="row" flex ng-show="vm.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Call Center</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c9_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c9_1" ng-init="vm.c9_1=14" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c9_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c9_2" ng-init="vm.c9_2=23" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c9_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c9_3" ng-init="vm.c9_3=12" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c9_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c9_4" ng-init="vm.c9_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c9_5" flex>
+                    <span class="total">{{vm.c9_1 + vm.c9_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c9_6" flex>
+                    <span class="total">{{vm.c9_2 + vm.c9_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c9_2 + vm.c9_4)/(vm.c9_1 + vm.c9_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Telesales</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c10_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c10_1" ng-init="vm.c10_1=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c10_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c10_2" ng-init="vm.c10_2=21" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c10_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c10_3" ng-init="vm.c10_3=12" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c10_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c10_4" ng-init="vm.c10_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c10_5" flex>
+                    <span class="total">{{vm.c10_1 + vm.c10_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c10_6" flex>
+                    <span class="total">{{vm.c10_2 + vm.c10_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c10_2 + vm.c10_4)/(vm.c10_1 + vm.c10_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Direct Sales</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c11_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c11_1" ng-init="vm.c11_1=33" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c11_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c11_2" ng-init="vm.c11_2=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c11_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c11_3" ng-init="vm.c11_3=77" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c11_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c11_4" ng-init="vm.c11_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c11_5" flex>
+                    <span class="total">{{vm.c11_1 + vm.c11_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c11_6" flex>
+                    <span class="total">{{vm.c11_2 + vm.c11_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c11_2 + vm.c11_4)/(vm.c11_1 + vm.c11_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Corporate Sales</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c12_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c12_1" ng-init="vm.c12_1=2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c12_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c12_2" ng-init="vm.c12_2=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c12_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c12_3" ng-init="vm.c12_3=2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c12_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c12_4" ng-init="vm.c12_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c12_5" flex>
+                    <span class="total">{{vm.c12_1 + vm.c12_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c12_6" flex>
+                    <span class="total">{{vm.c12_2 + vm.c12_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c12_2 + vm.c12_4)/(vm.c12_1 + vm.c12_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showCommercials">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Marketing & Communication</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c13_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c13_1" ng-init="vm.c13_1=8" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c13_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c13_2" ng-init="vm.c13_2=11" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c13_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c13_3" ng-init="vm.c13_3=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c13_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c13_4" ng-init="vm.c13_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c13_5" flex>
+                    <span class="total">{{vm.c13_1 + vm.c13_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c13_6" flex>
+                    <span class="total">{{vm.c13_2 + vm.c13_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c13_2 + vm.c13_4)/(vm.c13_1 + vm.c13_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showCommercials">
+            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="vm.showCommercials">
                 <div class="data-group__cell line-header" flex="30">Other Commercial</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c14_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c14_1" ng-init="vm.c14_1=4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c14_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c14_2" ng-init="vm.c14_2=2" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c14_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c14_3" ng-init="vm.c14_3=3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c14_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c14_4" ng-init="vm.c14_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c14_5" flex>
+                    <span class="total">{{vm.c14_1 + vm.c14_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c14_6" flex>
+                    <span class="total">{{vm.c14_2 + vm.c14_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c14_2 + vm.c14_4)/(vm.c14_1 + vm.c14_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
         </div>
@@ -576,176 +587,155 @@
 
         <!-- Office functions -->
         <div class="data-group brown-cells" flex="100">
-            <div class="data-group__row" ng-class="{'data-group__row--last':tc.showOfficeFunctions}" layout="row" flex>
-                <div class="data-group__cell line-header--group click" flex="30" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
-                    <span ng-if="tc.showOfficeFunctions"><i class="material-icons">add</i>Office Functions</span>
-                    <span ng-if="!tc.showOfficeFunctions"><i class="material-icons">remove</i>Office Functions</span>
+            <div class="data-group__row" ng-class="{'data-group__row--last':!vm.showOfficeFunctions}" layout="row" flex>
+                <div class="data-group__cell line-header--group click" flex="30" ng-click="vm.showOfficeFunctions=!vm.showOfficeFunctions">
+                    <span ng-if="!vm.showOfficeFunctions"><i class="material-icons">add</i>Office Functions</span>
+                    <span ng-if="vm.showOfficeFunctions"><i class="material-icons">remove</i>Office Functions</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 + vm.c20_1 || 0}}</span>
+                    <span class="total">{{vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 + vm.c20_2 || 0}}</span>
+                    <span class="total">{{vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3 + vm.c20_3 || 0}}</span>
+                    <span class="total">{{vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4 + vm.c20_4 || 0}}</span>
+                    <span class="total">{{vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c15_5 + vm.c16_5 + vm.c17_5 + vm.c18_5 + vm.c19_5 + vm.c20_5 || 0}}</span>
+                    <span class="total">{{vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 + vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c15_6 + vm.c16_6 + vm.c17_6 + vm.c18_6 + vm.c19_6 + vm.c20_6 || 0}}</span>
-                </div>
-            </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
-                <div class="data-group__cell line-header" flex="30">Customer Service </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c15_1" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c15_2" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c15_3" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c15_4" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c15_5" flex>
-                </div>
-                <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c15_6" flex>
+                    <span class="total">{{vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 + vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 + vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4)/(vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 + vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Finance</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c16_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c15_1" ng-init="vm.c15_1=4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c16_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c15_2" ng-init="vm.c15_2=21" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c16_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c15_3" ng-init="vm.c15_3=3" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c16_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c15_4" ng-init="vm.c15_4=15" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c16_5" flex>
+                    <span class="total">{{vm.c15_1 + vm.c15_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c16_6" flex>
+                    <span class="total">{{vm.c15_2 + vm.c15_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c15_2 + vm.c15_4)/(vm.c15_1 + vm.c15_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Legal</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c17_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c16_1" ng-init="vm.c16_1=4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c17_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c16_2" ng-init="vm.c16_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c17_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c16_3" ng-init="vm.c16_3=13" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c17_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c16_4" ng-init="vm.c16_4=51" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c17_5" flex>
+                    <span class="total">{{vm.c16_1 + vm.c16_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c17_6" flex>
+                    <span class="total">{{vm.c16_2 + vm.c16_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c16_2 + vm.c16_4)/(vm.c16_1 + vm.c16_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">HR</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c18_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c17_1" ng-init="vm.c17_1=14" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c18_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c17_2" ng-init="vm.c17_2=12" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c18_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c17_3" ng-init="vm.c17_3=13" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c18_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c17_4" ng-init="vm.c17_4=5" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c18_5" flex>
+                    <span class="total">{{vm.c17_1 + vm.c17_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c18_6" flex>
+                    <span class="total">{{vm.c17_2 + vm.c17_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c17_2 + vm.c17_4)/(vm.c17_1 + vm.c17_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row" layout="row" flex ng-show="!tc.showOfficeFunctions">
+            <div class="data-group__row" layout="row" flex ng-show="vm.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">IT</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c19_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c18_1" ng-init="vm.c18_1=4" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c19_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c18_2" ng-init="vm.c18_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c19_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c18_3" ng-init="vm.c18_3=31" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c19_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c18_4" ng-init="vm.c18_4=15" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c19_5" flex>
+                    <span class="total">{{vm.c18_1 + vm.c18_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c19_6" flex>
+                    <span class="total">{{vm.c18_2 + vm.c18_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c18_2 + vm.c18_4)/(vm.c18_1 + vm.c18_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
-            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="!tc.showOfficeFunctions">
+            <div class="data-group__row data-group__row--last" layout="row" flex ng-show="vm.showOfficeFunctions">
                 <div class="data-group__cell line-header" flex="30">Other Office Functions</div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c20_1" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c19_1" ng-init="vm.c19_1=42" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c20_2" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c19_2" ng-init="vm.c19_2=22" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c20_3" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c19_3" ng-init="vm.c19_3=31" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c20_4" flex>
+                    <input type="number" ng-disabled="!vm.isLocal" ng-model="vm.c19_4" ng-init="vm.c19_4=52" flex>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c20_5" flex>
+                    <span class="total">{{vm.c19_1 + vm.c19_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <input type="number" ng-model="vm.c20_6" flex>
+                    <span class="total">{{vm.c19_2 + vm.c19_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">{{(vm.c19_2 + vm.c19_4)/(vm.c19_1 + vm.c19_3)*100 || 0 | number:0}}%</span>
                 </div>
             </div>
         </div>
-        
+
         <div class="data-splitter"></div>
 
         <!-- Non-medical -->
@@ -753,352 +743,36 @@
             <div class="data-group__row data-group__row--last" layout="row" flex>
                 <div class="data-group__cell line-header--group" flex="30">
                     Non-medical Total
+                    <md-tooltip md-direction="right">
+                        Totals of Operations Non-medical + Commercial + Office Functions
+                    </md-tooltip>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">
+                        {{vm.c6_1 + vm.c7_1 + vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 + vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">
+                        {{vm.c6_2 + vm.c7_2 + vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 + vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">
+                        {{vm.c6_3 + vm.c7_3 + vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3 + vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">
+                        {{vm.c6_4 + vm.c7_4 + vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4 + vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4 || 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">
+                        {{vm.c6_1 + vm.c7_1 + vm.c8_1 + vm.c9_1 + vm.c10_1 + vm.c11_1 + vm.c12_1 + vm.c13_1 + vm.c14_1 + vm.c15_1 + vm.c16_1 + vm.c17_1 + vm.c18_1 + vm.c19_1 + vm.c6_3 + vm.c7_3 + vm.c8_3 + vm.c9_3 + vm.c10_3 + vm.c11_3 + vm.c12_3 + vm.c13_3 + vm.c14_3 + vm.c15_3 + vm.c16_3 + vm.c17_3 + vm.c18_3 + vm.c19_3|| 0}}</span>
                 </div>
                 <div class="data-group__cell" flex="10">
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
-                </div>
-                <div class="data-group__cell data-group__cell--last" flex>
-                    <span class="total">{{vm.c1_1 + vm.c2_1 || 0}}</span>
+                    <span class="total">
+                        {{vm.c6_2 + vm.c7_2 + vm.c8_2 + vm.c9_2 + vm.c10_2 + vm.c11_2 + vm.c12_2 + vm.c13_2 + vm.c14_2 + vm.c15_2 + vm.c16_2 + vm.c17_2 + vm.c18_2 + vm.c19_2 + vm.c6_4 + vm.c7_4 + vm.c8_4 + vm.c9_4 + vm.c10_4 + vm.c11_4 + vm.c12_4 + vm.c13_4 + vm.c14_4 + vm.c15_4 + vm.c16_4 + vm.c17_4 + vm.c18_4 + vm.c19_4 || 0}}</span>
                 </div>
             </div>
+        </div>
+
     </div>
-
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" ng-if="false">
-        <thead>
-            <tr>
-                <th rowspan="3" style="vertical-align: middle;">ACTIVE STAFF MEMBERS</th>
-                <th colspan="2">Employees</th>
-                <th colspan="2">Contractors</th>
-                <th colspan="2">TOTAL</th>
-                <th rowspan="2">Average Commitment
-                    <br> to Company</th>
-            </tr>
-            <tr>
-                <th>Headcount</th>
-                <th>FTEs</th>
-                <th>Headcount</th>
-                <th>FTEs</th>
-                <th>Headcount</th>
-                <th>FTEs</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="tr-total no-icon">
-                <td class="mdl-data-table__cell--non-numeric"><strong>Grand TOTAL</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td></td>
-            </tr>
-            <!--// Phycicians -->
-            <tr class="tr-total tr-total--link blue-cells" ng-click="tc.showPhysicians=!tc.showPhysicians">
-                <td id="Physicians" class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="tc.showPhysicians">add</i>
-                    <i class="material-icons" ng-if="!tc.showPhysicians">remove</i>Physicians</td>
-                <td><strong>{{vm.pcpeHead + vm.speHead}}</strong></td>
-                <td><strong>{{vm.pcpeFte  + vm.speFte}}</strong></td>
-                <td><strong>{{vm.pcpcHead + vm.spcHead}}</strong></td>
-                <td><strong>{{vm.pcpcFte  + vm.spcFte}}</strong></td>
-                <td><strong>{{vm.pcpeHead + vm.speHead + vm.pcpcHead + vm.spcHead}}</strong></td>
-                <td><strong>{{vm.pcpeFte  + vm.speFte + vm.pcpcFte  + vm.spcFte}}</strong></td>
-                <td><strong>{{((vm.pcpeFte  + vm.speFte + vm.pcpcFte  + vm.spcFte) / (vm.pcpeHead + vm.speHead + vm.pcpcHead + vm.spcHead)) * 100 | number:2}} %</strong></td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link blue-cells" ng-show="!tc.showPhysicians">
-                <td class="mdl-data-table__cell--non-numeric">Primary Care Physicians</td>
-                <td><input type="number" ng-model="vm.pcpeHead"></td>
-                <td><input type="number" ng-model="vm.pcpeFte"></td>
-                <td><input type="number" ng-model="vm.pcpcHead"></td>
-                <td><input type="number" ng-model="vm.pcpcFte"></td>
-                <td>{{vm.pcpeHead + vm.pcpcHead}}</td>
-                <td>{{vm.pcpeFte + vm.pcpcFte}}</td>
-                <td>{{(vm.pcpeFte + vm.pcpcFte) / (vm.pcpeHead + vm.pcpcHead) * 100 | number: 2}} %</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link blue-cells" ng-show="!tc.showPhysicians">
-                <td class="mdl-data-table__cell--non-numeric">Specialists Physicians</td>
-                <td><input type="number" ng-model="vm.speHead"></td>
-                <td><input type="number" ng-model="vm.speFte"></td>
-                <td><input type="number" ng-model="vm.spcHead"></td>
-                <td><input type="number" ng-model="vm.spcFte"></td>
-                <td>{{vm.speHead + vm.spcHead}}</td>
-                <td>{{vm.speFte + vm.spcFte}}</td>
-                <td>{{(vm.speFte + vm.spcFte) / (vm.speHead + vm.spcHead) * 100 | number: 2}} %</td>
-            </tr>
-            <!--// End -->
-
-            <!--// Operations -->
-            <tr class="tr-total tr-total--link green-cells" ng-click="tc.showOperations=!tc.showOperations">
-                <td class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="tc.showOperations">add</i>
-                    <i class="material-icons" ng-if="!tc.showOperations">remove</i><strong>Operations</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
-                <td class="mdl-data-table__cell--non-numeric">Nurses
-                    <md-tooltip md-direction="right">
-                        to include: regular and specialists nurses which are working close to the patients; midwifes; nurses from BDP's, </md-tooltip>
-                </td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
-                <td class="mdl-data-table__cell--non-numeric">Technician Specialists & Lab Specialists</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>15%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
-                <td class="mdl-data-table__cell--non-numeric">Other Medical</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
-                <td class="mdl-data-table__cell--non-numeric">Operations Admin</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link green-cells" ng-show="!tc.showOperations">
-                <td class="mdl-data-table__cell--non-numeric">Operations HO & other OPS</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total no-icon green-cells">
-                <td class="mdl-data-table__cell--non-numeric"><strong>Operations Medical</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>11%</td>
-            </tr>
-            <tr class="tr-total no-icon green-cells">
-                <td class="mdl-data-table__cell--non-numeric"><strong>Operations Non-Medical</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2%</td>
-            </tr>
-            <!--// End -->
-
-            <!--// Commercials -->
-            <tr class="tr-total tr-total--link orange-cells" ng-click="tc.showCommercials=!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="tc.showCommercials">add</i>
-                    <i class="material-icons" ng-if="!tc.showCommercials">remove</i><strong>Commercial</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Customer Service</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Call Center</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>15%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Telesales</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Direct Sales</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Corporate Sales</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Marketing & Communication</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link orange-cells" ng-show="!tc.showCommercials">
-                <td class="mdl-data-table__cell--non-numeric">Other Commercial</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <!--// End -->
-
-            <!--/ Office functions -->
-            <tr class="tr-total tr-total--link brown-cells" ng-click="tc.showOfficeFunctions=!tc.showOfficeFunctions">
-                <td class="mdl-data-table__cell--non-numeric">
-                    <i class="material-icons" ng-if="tc.showOfficeFunctions">add</i>
-                    <i class="material-icons" ng-if="!tc.showOfficeFunctions">remove</i><strong>Office Functions</strong></td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
-                <td class="mdl-data-table__cell--non-numeric">Finance</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
-                <td class="mdl-data-table__cell--non-numeric">Legal</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>15%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
-                <td class="mdl-data-table__cell--non-numeric">HR</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
-                <td class="mdl-data-table__cell--non-numeric">IT</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <tr class="tr-total__detail tr-total--link brown-cells" ng-show="!tc.showOfficeFunctions">
-                <td class="mdl-data-table__cell--non-numeric">Other Office Functions</td>
-                <td><input type="number" ng-model="vm.nueHead"></td>
-                <td><input type="number" ng-model="vm.nueFte"></td>
-                <td><input type="number" ng-model="vm.nucHead"></td>
-                <td><input type="number" ng-model="vm.nucFte"></td>
-                <td>2</td>
-                <td>2</td>
-                <td>23%</td>
-            </tr>
-            <!--// End -->
-
-            <tr class="tr-total no-icon purple-cells">
-                <td class="mdl-data-table__cell--non-numeric"><strong>Non Medical Total</strong></td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td>2</td>
-                <td></td>
-            </tr>
-            <tr class="tr-total no-icon">
-                <td class="mdl-data-table__cell--non-numeric"><strong>Average Commitment to Company</strong></td>
-                <td colspan="2">2%</td>
-                <td colspan="2">22%</td>
-                <td colspan="2">21%</td>
-                <td colspan="2">20%</td>
-            </tr>
-        </tbody>
-    </table>
-
 </md-content>

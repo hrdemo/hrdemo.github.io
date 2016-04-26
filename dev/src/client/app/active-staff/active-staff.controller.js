@@ -18,6 +18,10 @@
         vm.showTab = showTab;
         vm.selectedCountry;
         vm.isLocal = false;
+        vm.showPhysicians = false;
+        vm.showOperations = false;
+        vm.showCommercials = false;
+        vm.showOfficeFunctions = false;
         vm.tab1 = true;
         vm.tab2 = false;
         vm.tab3 = false;
@@ -27,6 +31,11 @@
         function activate() {
             if ($localStorage.userName === 'localhr') {
                 vm.isLocal = true;
+
+                vm.showPhysicians = true;
+                vm.showOperations = true;
+                vm.showCommercials = true;
+                vm.showOfficeFunctions = true;
             }
             vm.selectedDivision = '--';
             vm.selectedCountry = 'all';
@@ -40,28 +49,28 @@
             // division
             if ($localStorage.selectedLevel.id === 2) {
                 vm.selectedDivision = $localStorage.selectedItem.name;
-                vm.selectedCountry  = $localStorage.selectedItem.country;
+                vm.selectedCountry = $localStorage.selectedItem.country;
                 vm.selectedBusiness = $localStorage.selectedItem.business;
                 vm.selectedLocation = $localStorage.selectedItem.location;
             }
             // country
             if ($localStorage.selectedLevel.id === 3) {
                 vm.selectedDivision = $localStorage.selectedItem.division;
-                vm.selectedCountry  = $localStorage.selectedItem.name;
+                vm.selectedCountry = $localStorage.selectedItem.name;
                 vm.selectedBusiness = $localStorage.selectedItem.business;
                 vm.selectedLocation = $localStorage.selectedItem.location;
             }
             // business
             if ($localStorage.selectedLevel.id === 4) {
                 vm.selectedDivision = $localStorage.selectedItem.division;
-                vm.selectedCountry  = $localStorage.selectedItem.country;
+                vm.selectedCountry = $localStorage.selectedItem.country;
                 vm.selectedBusiness = $localStorage.selectedItem.name;
                 vm.selectedLocation = $localStorage.selectedItem.location;
             }
             // location
             if ($localStorage.selectedLevel.id === 5) {
                 vm.selectedDivision = $localStorage.selectedItem.division;
-                vm.selectedCountry  = $localStorage.selectedItem.country;
+                vm.selectedCountry = $localStorage.selectedItem.country;
                 vm.selectedBusiness = $localStorage.selectedItem.business;
                 vm.selectedLocation = $localStorage.selectedItem.name
             }
