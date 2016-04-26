@@ -1,21 +1,21 @@
 <md-dialog aria-label="Select level" >
     <form ng-show="vm.step1">
         <md-dialog-content style="width:500px;">
-            <div class="md-dialog-content">
-                <md-radio-group ng-model="vm.selectedLevel">
-                    <md-subheader class="md-no-sticky">Select data level</md-subheader>
-                    <md-list>
-                        <md-list-item class="md-2-line" ng-repeat="level in vm.dataLevels" ng-click="null" layout="column">
-                            <md-radio-button ng-value="level" class="md-primary" style="margin-bottom:0;padding: 15px 0 15px 0; min-width: 400px;">
-                                <div class="md-list-item-text" layout="column">
-                                    <h3>{{ level.name }}</h3>
-                                    <p>{{ level.desc }}</p>
-                                </div>
-                            </md-radio-button>
-                            <md-divider></md-divider>
-                        </md-list-item>
-                    </md-list>
-                </md-radio-group>
+            <div class="md-dialog-content" ng-model="vm.selectedLevel">
+                <md-subheader class="md-no-sticky">Select data level</md-subheader>
+                <md-list>
+                    <md-list-item class="md-2-line" ng-repeat="level in vm.dataLevels" ng-click="vm.selectedLevel=level">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ level.name }}</h3>
+                            <p>{{ level.desc }}</p>
+                        </div>
+                        <md-icon class="md-secondary material-icons" 
+                        style="color: #F5F5F5;font-weight:600;"
+                        ng-class="{'selected':level.id===vm.selectedLevel.id}"
+                        ng-click="vm.selectedLevel=level" aria-label="Done">done</md-icon>
+                    <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
@@ -29,20 +29,20 @@
     </form>
     <form ng-show="vm.step2">
         <md-dialog-content style="width:500px;">
-            <div class="md-dialog-content">
-                <md-radio-group ng-model="vm.selectedItem">
-                    <md-subheader class="md-no-sticky">Select {{vm.selectedLevel.name}}</md-subheader>
-                    <md-list>
-                        <md-list-item class="md-2-line" ng-repeat="item in vm.items" ng-click="null">
-                            <md-radio-button ng-value="item" class="md-primary" style="margin-bottom:0;padding: 15px 0 15px 0; min-width: 400px;">
-                                <div class="md-list-item-text">
-                                    <h3>{{ item.name }}</h3>
-                                </div>
-                            </md-radio-button>
-                            <md-divider></md-divider>
-                        </md-list-item>
-                    </md-list>
-                </md-radio-group>
+            <div class="md-dialog-content" ng-model="vm.selectedItem">
+                <md-subheader class="md-no-sticky">Select {{vm.selectedLevel.name}}</md-subheader>
+                <md-list>
+                    <md-list-item class="md-2-line" ng-repeat="item in vm.items" ng-click="vm.selectedItem=item">
+                        <div class="md-list-item-text">
+                            <h3>{{ item.name }}</h3>
+                        </div>
+                        <md-icon class="md-secondary material-icons" 
+                        style="color: #F5F5F5;font-weight:600;"
+                        ng-class="{'selected':item.id===vm.selectedItem.id}"
+                        ng-click="vm.selectedItem=item" aria-label="Done">done</md-icon>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
